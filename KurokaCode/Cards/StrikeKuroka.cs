@@ -27,10 +27,18 @@ public class StrikeKuroka() : KurokaCard(1, CardType.Attack, CardRarity.Basic, T
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        logger.Info(PortraitPath);
-        StrikeKuroka card = this;
-        ArgumentNullException.ThrowIfNull((object) play.Target, "cardPlay.Target");
-        AttackCommand attackCommand = await DamageCmd.Attack(card.DynamicVars.Damage.BaseValue).FromCard((CardModel) card).Targeting(play.Target).WithHitFx("vfx/strike_kuroka").Execute(choiceContext);
+        logger.Info(PortraitPath ?? "PortraitPath is null");
+        
+        if (play.Target == null)
+        {
+            logger.Warn($"[{this.Id}] 공격 타겟 없음.");
+            return;
+        }
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+            .FromCard(this)
+            .Targeting(play.Target)
+            .WithHitFx("vfx/strike_kuroka")
+            .Execute(choiceContext);
     }
 
     protected override void OnUpgrade()
