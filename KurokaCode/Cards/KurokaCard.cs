@@ -4,7 +4,6 @@ using BaseLib.Utils;
 using Kuroka.KurokaCode.Character;
 using Kuroka.KurokaCode.Extensions;
 using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Logging;
 
 namespace Kuroka.KurokaCode.Cards;
 
