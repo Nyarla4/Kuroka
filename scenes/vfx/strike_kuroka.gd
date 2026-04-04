@@ -10,8 +10,11 @@ func _ready():
 		animator.play("frame")
 		audio.play()
 		
+	# 애니메이션 종료 시 숨기기
+	animator.animation_finished.connect(func(): animator.hide())
+	
+	# 씬 삭제 기준을 오디오 종료로
 	audio.finished.connect(_on_audio_finished)
 
 func _on_audio_finished():
-	# 실행 과정이 끝났으므로 메모리에서 안전하게 제거합니다.
 	queue_free()
