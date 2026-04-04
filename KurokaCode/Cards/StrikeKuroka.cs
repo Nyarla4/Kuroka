@@ -30,7 +30,7 @@ public class StrikeKuroka() : KurokaCard(1, CardType.Attack, CardRarity.Basic, T
         logger.Info(PortraitPath);
         StrikeKuroka card = this;
         ArgumentNullException.ThrowIfNull((object) play.Target, "cardPlay.Target");
-        AttackCommand attackCommand = await DamageCmd.Attack(card.DynamicVars.Damage.BaseValue).FromCard((CardModel) card).Targeting(play.Target).WithHitFx("vfx/vfx_attack_slash").Execute(choiceContext);
+        AttackCommand attackCommand = await DamageCmd.Attack(card.DynamicVars.Damage.BaseValue).FromCard((CardModel) card).Targeting(play.Target).WithHitFx("vfx/strike_kuroka").Execute(choiceContext);
     }
 
     protected override void OnUpgrade()

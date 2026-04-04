@@ -1,4 +1,5 @@
 ﻿using Kuroka.KurokaCode.Cards;
+using Kuroka.KurokaCode.Commands;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Commands.Builders;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -23,8 +24,15 @@ public class DefendKuroka() : KurokaCard(1, CardType.Skill, CardRarity.Basic, Ta
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        DefendKuroka defendIronclad = this;
-        Decimal num = await CreatureCmd.GainBlock(defendIronclad.Owner.Creature, defendIronclad.DynamicVars.Block, cardPlay);
+        // 커스텀 소리와 기본 이펙트를 조합하여 실행
+        await CustomCreatureCmd.GainBlockWithCustomVfx(
+            this.Owner.Creature, 
+            this.DynamicVars.Block.BaseValue, 
+            this.DynamicVars.Block.Props, 
+            cardPlay, 
+            "audio/defend_kuroka",
+            "vfx/vfx_block"
+        );
     }
 
     protected override void OnUpgrade() => this.DynamicVars.Block.UpgradeValueBy(3M);
