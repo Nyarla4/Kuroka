@@ -34,6 +34,7 @@ public class StrikeKuroka() : KurokaCard(1, CardType.Attack, CardRarity.Basic, T
             logger.Warn($"[{this.Id}] 공격 타겟 없음.");
             return;
         }
+        
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this)
             .Targeting(play.Target)

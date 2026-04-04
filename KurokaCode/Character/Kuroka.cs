@@ -25,12 +25,12 @@ public class Kuroka : PlaceholderCharacterModel
         ModelDb.Card<StrikeKuroka>(),
         ModelDb.Card<StrikeKuroka>(),
         ModelDb.Card<StrikeKuroka>(),
-        ModelDb.Card<StrikeKuroka>(),
+        ModelDb.Card<Majinai>(),
         ModelDb.Card<DefendKuroka>(),
         ModelDb.Card<DefendKuroka>(),
         ModelDb.Card<DefendKuroka>(),
         ModelDb.Card<DefendKuroka>(),
-        ModelDb.Card<DefendKuroka>()
+        ModelDb.Card<SpicyNakjiKimchiJook>()
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>

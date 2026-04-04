@@ -2,5 +2,9 @@
   "KUROKA-STRIKE_KUROKA.description": "피해를 {Damage} 줍니다.",
   "KUROKA-STRIKE_KUROKA.title": "타격",
   "KUROKA-DEFEND_KUROKA.description": "방어도를 {Block} 얻습니다.",
-  "KUROKA-DEFEND_KUROKA.title": "수비"
+  "KUROKA-DEFEND_KUROKA.title": "수비",
+  "KUROKA-MAJINAI.description": "주문을 {MajinaiPower:diff()} 겁니다.",
+  "KUROKA-MAJINAI.title": "주문",
+  "KUROKA-SPICY_NAKJI_KIMCHI_JOOK.description": "매콘나찌긴찌쥬. 주문을 1턴 더 유지시킵니다.",
+  "KUROKA-SPICY_NAKJI_KIMCHI_JOOK.title": "매콤낙지김치죽"
 }

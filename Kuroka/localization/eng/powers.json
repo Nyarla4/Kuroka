@@ -1,3 +1,8 @@
 {
-  
+  "KUROKA-MAJINAI_POWER.description": "그냥설명-턴종료시 피해 후 소멸",
+  "KUROKA-MAJINAI_POWER.smartDescription": "토글설명-턴종료시 피해 후 소멸",
+  "KUROKA-MAJINAI_POWER.title": "주문",
+  "KUROKA-SPICY_NAKJI_KIMCHI_JOOK_POWER.description": "그냥설명-주문 1턴 유지",
+  "KUROKA-SPICY_NAKJI_KIMCHI_JOOK_POWER.smartDescription": "토글설명-주문 1턴 유지",
+  "KUROKA-SPICY_NAKJI_KIMCHI_JOOK_POWER.title": "매콤낙지김치죽"
 }
