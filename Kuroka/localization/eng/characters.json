@@ -1,0 +1,16 @@
+{
+  "KUROKA-KUROKA.aromaPrinciple": "Lore",
+  "KUROKA-KUROKA.banter.alive.endTurnPing": "Co-op hurry up end turn ping message",
+  "KUROKA-KUROKA.banter.dead.endTurnPing": "...",
+  "KUROKA-KUROKA.cardsModifierDescription": "__ cards will now appear in rewards and shops.",
+  "KUROKA-KUROKA.cardsModifierTitle": "__ Cards",
+  "KUROKA-KUROKA.description": "Character Selection\nScreen Description",
+  "KUROKA-KUROKA.eventDeathPrevention": "Co-op survival line",
+  "KUROKA-KUROKA.goldMonologue": "Line spoken when obtaining a large amount of gold",
+  "KUROKA-KUROKA.possessiveAdjective": "his/her/its",
+  "KUROKA-KUROKA.pronounObject": "him/her/it",
+  "KUROKA-KUROKA.pronounPossessive": "his/hers/its",
+  "KUROKA-KUROKA.pronounSubject": "he/she/it",
+  "KUROKA-KUROKA.title": "The Kuroka",
+  "KUROKA-KUROKA.titleObject": "The Kuroka"
+}

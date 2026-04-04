@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxh6e204jryo6"]
+
+[ext_resource type="AudioStream" uid="uid://bob8ednar7i6g" path="res://resources/audio/kurokastrike.mp3" id="1_0cxpm"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_0cxpm")
