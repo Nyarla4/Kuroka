@@ -4,7 +4,6 @@ using Godot;
 using Kuroka.KurokaCode.Cards;
 using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Relics;
 
 namespace Kuroka.KurokaCode.Character;
