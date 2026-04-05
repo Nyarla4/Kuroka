@@ -24,8 +24,10 @@ public static class RorokaCmd
       var roroModel = ModelDb.Get<Roroka>();
       
       var clonedRoroka = (Roroka)roroModel.MutableClone();
-
-      roroka = await PlayerCmd.AddPet<Roroka>(owner);
+      
+      roroka = await CreatureCmd.Add(clonedRoroka, combatState, CombatSide.Player); 
+        
+      roroka.PetOwner = owner;
       
       await PowerCmd.Apply<RorokaPower>(roroka, 1M, null, null);
 
