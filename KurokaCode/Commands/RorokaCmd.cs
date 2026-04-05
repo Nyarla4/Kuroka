@@ -27,8 +27,6 @@ public static class RorokaCmd
 
       roroka = await PlayerCmd.AddPet<Roroka>(owner);
       
-      roroka.PetOwner = owner;
-      
       await PowerCmd.Apply<RorokaPower>(roroka, 1M, null, null);
 
       roroka.CurrentHp = (int)amount;
