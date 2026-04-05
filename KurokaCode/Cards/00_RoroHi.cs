@@ -22,6 +22,8 @@ public class RoroHi() : KurokaCard(2, CardType.Skill,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
+        CustomCreatureCmd.PlayAudio("audio/roro_hi");
+        
         Creature roroka = null;
         foreach (var creature in this.CombatState.GetCreaturesOnSide(CombatSide.Player))
         {

@@ -1,12 +1,25 @@
-[gd_scene format=3 uid="uid://dv7nn6reneiwo"]
+[gd_scene load_steps=2 format=3 uid="uid://dv7nn6reneiwo"]
+
+[ext_resource type="Texture2D" uid="uid://c4bl4ot5prgxb" path="res://resources/image/roroka.png" id="1_2ysv3"]
 
 [node name="KurokaRoroka" type="Node2D"]
 
 [node name="Visuals" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+position = Vector2(0, -105)
+texture = ExtResource("1_2ysv3")
 
 [node name="Bounds" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -120.0
+offset_top = -210.0
+offset_right = 120.0
+
+[node name="CenterPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -70)
+
+[node name="IntentPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -220)
