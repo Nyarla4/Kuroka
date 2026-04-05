@@ -3,6 +3,7 @@ using Kuroka.KurokaCode.Extensions;
 using Godot;
 using Kuroka.KurokaCode.Cards;
 using MegaCrit.Sts2.Core.Entities.Characters;
+using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Relics;
 
@@ -49,4 +50,5 @@ public class Kuroka : PlaceholderCharacterModel
     public override string CustomCharacterSelectIconPath => "char_select_char_name.png".CharacterUiPath();
     public override string CustomCharacterSelectLockedIconPath => "char_select_char_name_locked.png".CharacterUiPath();
     public override string CustomMapMarkerPath => "map_marker_char_name.png".CharacterUiPath();
+    public override string CustomCharacterSelectBg => SceneHelper.GetScenePath("background/background_kuroka");
 }
