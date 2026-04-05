@@ -24,13 +24,15 @@ public class DefendKuroka() : KurokaCard(1, CardType.Skill, CardRarity.Basic, Ta
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        // 커스텀 소리와 기본 이펙트를 조합하여 실행
-        await CustomCreatureCmd.GainBlockWithCustomVfx(
+        // 커스텀 사운드
+        CustomCreatureCmd.PlayAudio("audio/defend_kuroka");
+        
+        // 방어도 처리
+        await CustomCreatureCmd.Defend(
             this.Owner.Creature, 
             this.DynamicVars.Block.BaseValue, 
             this.DynamicVars.Block.Props, 
             cardPlay, 
-            "audio/defend_kuroka",
             "vfx/vfx_block"
         );
     }
