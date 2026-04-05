@@ -10,4 +10,5 @@ public class Roroka : CustomPetModel
 
     public override int MinInitialHp => 24;
     public override int MaxInitialHp => 24;
+    public override string? CustomVisualPath => "res://Kuroka/scenes/creature_visuals/kuroka-roroka.tscn";
 }

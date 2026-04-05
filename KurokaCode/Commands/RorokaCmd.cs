@@ -3,13 +3,14 @@ using Kuroka.KurokaCode.Powers;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Models;
 
 namespace Kuroka.KurokaCode.Commands;
 
 public static class RorokaCmd
 {
-  public static async Task SummonOrHeal(CombatState combatState, uint? rorokaId, Decimal amount)
+  public static async Task SummonOrHeal(CombatState combatState, uint? rorokaId, Decimal amount, Player owner)
   {
     Creature? roroka = null;
     
@@ -24,11 +25,17 @@ public static class RorokaCmd
       
       var clonedRoroka = (Roroka)roroModel.MutableClone();
       
-      roroka = await CreatureCmd.Add(clonedRoroka, combatState, CombatSide.Player);
+      roroka = await CreatureCmd.Add(clonedRoroka, combatState, CombatSide.Player, owner.Creature.SlotName);
+      
+      roroka.PetOwner = owner;
       
       await PowerCmd.Apply<RorokaPower>(roroka, 1M, null, null);
-    }
 
-    await CreatureCmd.Heal(roroka, amount);
+      roroka.CurrentHp = (int)amount;
+    }
+    else
+    {
+      await CreatureCmd.Heal(roroka, amount);      
+    }
   }
 }
