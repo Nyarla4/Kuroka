@@ -9,6 +9,6 @@
   "KUROKA-MAJINAI.title": "주문",
   "KUROKA-SPICY_NAKJI_KIMCHI_JOOK.description": "매콘나찌긴찌쥬. 주문을 1턴 더 유지시킵니다.",
   "KUROKA-SPICY_NAKJI_KIMCHI_JOOK.title": "매콤낙지김치죽",
-  "KUROKA-ROROKA_GROWTH_CARD.description": "로로카의 최대 체력을 {RorokaGrowthPower:diff()} 증가시킵니다.",
+  "KUROKA-ROROKA_GROWTH_CARD.description": "로로카의 최대 체력을 {RorokaGrowth:diff()} 증가시킵니다.",
   "KUROKA-ROROKA_GROWTH_CARD.title": "로로카 성장"
 }

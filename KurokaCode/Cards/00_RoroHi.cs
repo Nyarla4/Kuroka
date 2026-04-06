@@ -35,7 +35,7 @@ public class RoroHi() : KurokaCard(2, CardType.Skill,
         }
 
         uint? rorokaId = roroka?.CombatId;
-        await RorokaCmd.SummonOrHeal(this.CombatState, rorokaId, DynamicVars["Roroka"].BaseValue, this.Owner);
+        await RorokaCmd.Heal(this.CombatState, rorokaId, DynamicVars["Roroka"].BaseValue, this.Owner);
     }
 
     protected override void OnUpgrade()

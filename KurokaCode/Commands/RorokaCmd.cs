@@ -10,7 +10,7 @@ namespace Kuroka.KurokaCode.Commands;
 
 public static class RorokaCmd
 {
-    public static async Task SummonOrHeal(CombatState combatState, uint? rorokaId, Decimal amount, Player owner)
+    public static async Task Heal(CombatState combatState, uint? rorokaId, Decimal amount, Player owner)
     {
         Creature? roroka = null;
 
@@ -34,5 +34,29 @@ public static class RorokaCmd
         {
             await CreatureCmd.Heal(roroka, amount);
         }
+    }
+    
+    public static async Task AddMax(CombatState combatState, uint? rorokaId, Decimal amount, Player owner)
+    {
+        Creature? roroka = null;
+
+        if (rorokaId.HasValue)
+        {
+            roroka = combatState.GetCreature(rorokaId.Value);
+        }
+
+        if (roroka == null)
+        {
+            var roroModel = ModelDb.Get<Roroka>();
+            var clonedRoroka = (Roroka)roroModel.MutableClone();
+
+            roroka = await CreatureCmd.Add(clonedRoroka, combatState, CombatSide.Player);
+            roroka.PetOwner = owner;
+
+            await PowerCmd.Apply<RorokaPower>(roroka, 1M, null, null);
+            roroka.CurrentHp = 0;
+        }
+        
+        await CreatureCmd.GainMaxHp(roroka, amount);
     }
 }
