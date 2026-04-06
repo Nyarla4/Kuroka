@@ -17,14 +17,14 @@ public abstract class RorokaGrowthCard(int cost, CardRarity rarity) : KurokaCard
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        Creature roroka = GetRoroka();
+        Creature? roroka = GetRoroka();
         uint? rorokaId = roroka?.CombatId;
-        await RorokaCmd.AddMax(this.CombatState, rorokaId, DynamicVars["RorokaGrowth"].BaseValue, this.Owner);
+        await RorokaCmd.AddMax(this.CombatState!, rorokaId, DynamicVars["RorokaGrowth"].BaseValue, this.Owner);
     }
 
-    protected Creature GetRoroka()
+    protected Creature? GetRoroka()
     {
-        foreach (var creature in this.CombatState.GetCreaturesOnSide(CombatSide.Player))
+        foreach (var creature in this.CombatState!.GetCreaturesOnSide(CombatSide.Player))
         {
             if (creature.Monster is Roroka && creature.PetOwner == this.Owner)
             {

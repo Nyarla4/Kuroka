@@ -10,30 +10,34 @@ using Logger = MegaCrit.Sts2.Core.Logging.Logger;
 
 namespace Kuroka.KurokaCode.Cards;
 
-  
 public class RoroCute() : RorokaGrowthCard(1, CardRarity.Uncommon)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new("RorokaGrowth", 5M), new PowerVar<RoroCutePower>(1M)];
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+        [new("RorokaGrowth", 5M), new PowerVar<RoroCutePower>(1M)];
+
     private Logger _logger = new Logger("RoroCute", LogType.Actions);
+
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
         await base.OnPlay(choiceContext, play);
-        
-        Creature roroka = GetRoroka();
-        
-        await PowerCmd.Apply<RoroCutePower>(
-            roroka, 
-            DynamicVars.Power<RoroCutePower>().BaseValue,
-            this.Owner.Creature, 
-            this
-        );
 
+        Creature? roroka = GetRoroka();
+
+        if (roroka != null)
+        {
+            await PowerCmd.Apply<RoroCutePower>(
+                roroka,
+                DynamicVars.Power<RoroCutePower>().BaseValue,
+                this.Owner.Creature,
+                this
+            );
+        }
     }
 
     protected override void OnUpgrade()
-    { 
+    {
         DynamicVars["RorokaGrowth"].UpgradeValueBy(6M);
     }
 }

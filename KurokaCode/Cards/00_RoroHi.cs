@@ -24,8 +24,8 @@ public class RoroHi() : KurokaCard(2, CardType.Skill,
     {
         CustomCreatureCmd.PlayAudio("audio/roro_hi");
         
-        Creature roroka = null;
-        foreach (var creature in this.CombatState.GetCreaturesOnSide(CombatSide.Player))
+        Creature? roroka = null;
+        foreach (var creature in this.CombatState!.GetCreaturesOnSide(CombatSide.Player))
         {
             if (creature.Monster is Roroka && creature.PetOwner == this.Owner)
             {

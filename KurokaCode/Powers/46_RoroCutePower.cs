@@ -1,5 +1,4 @@
-﻿using MegaCrit.Sts2.Core.Combat;
-using MegaCrit.Sts2.Core.Commands;
+﻿using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
@@ -23,7 +22,7 @@ public class RoroCutePower : KurokaPower
             return;
         }
         
-        Creature enemy = player.RunState.Rng.CombatTargets.NextItem<Creature>((IEnumerable<Creature>) CombatState.HittableEnemies);
+        Creature? enemy = player.RunState.Rng.CombatTargets.NextItem(CombatState.HittableEnemies);
         if (enemy != null)
         {
             await PowerCmd.Apply<WeakPower>(
