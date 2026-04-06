@@ -14,7 +14,7 @@ namespace Kuroka.KurokaCode.Cards;
 public class RorokaGrowthCard() : KurokaCard(2, CardType.Skill,
     CardRarity.Basic, TargetType.None)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new ("RorokaGrowth", 5M)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<RorokaGrowthPower>(5M)];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
@@ -31,7 +31,7 @@ public class RorokaGrowthCard() : KurokaCard(2, CardType.Skill,
         }
 
         uint? rorokaId = roroka?.CombatId;
-        await RorokaCmd.SummonOrHeal(this.CombatState, rorokaId, DynamicVars["RorokaGrowth"].BaseValue, this.Owner);
+        await RorokaCmd.SummonOrHeal(this.CombatState, rorokaId, DynamicVars.Power<RorokaGrowthPower>().BaseValue, this.Owner);
         
         await PowerCmd.Apply<RorokaGrowthPower>(
             roroka, 
@@ -43,6 +43,6 @@ public class RorokaGrowthCard() : KurokaCard(2, CardType.Skill,
 
     protected override void OnUpgrade()
     {
-        DynamicVars["RorokaGrowth"].UpgradeValueBy(6M);
+        DynamicVars.Power<RorokaGrowthPower>().UpgradeValueBy(6M);
     }
 }

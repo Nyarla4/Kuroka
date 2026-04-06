@@ -1,6 +1,7 @@
 ﻿using Kuroka.KurokaCode.Pets;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
+using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Rooms;
 
@@ -11,6 +12,7 @@ public class RorokaGrowthPower : KurokaPower // (STS2 파워 베이스 클래스
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
+    Logger logger = new Logger("RorokaGrowthPower",LogType.Actions);
     // 🌊 [흐름 영역]: 파워가 대상에게 '부여'될 때의 처리
     public override Task BeforePowerAmountChanged(
         PowerModel power,        // 부여되는 파워 객체
@@ -19,12 +21,17 @@ public class RorokaGrowthPower : KurokaPower // (STS2 파워 베이스 클래스
         Creature? applier,       // 파워를 부여한 주체
         CardModel? cardSource)   // 파워를 부여한 카드 (있을 경우)
     {
-        if (!(target.GetType().Equals(typeof(Roroka))))
+        if (power != this)
         {
             return base.BeforePowerAmountChanged(power, amount, target, applier, cardSource);
         }
 
-        target.MaxHp += (int)amount;
+        logger.Info("로그 체크");
+        if (target is Roroka)
+        {
+            logger.Info("로로카 체크");
+            target.MaxHp += (int)amount;   
+        }
         
         return base.BeforePowerAmountChanged(power, amount, target, applier, cardSource);
     }
