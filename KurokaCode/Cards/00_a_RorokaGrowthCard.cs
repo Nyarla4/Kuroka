@@ -20,18 +20,12 @@ public class RorokaGrowthCard() : KurokaCard(2, CardType.Skill,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        Creature roroka = null;
-        foreach (var creature in this.CombatState.GetCreaturesOnSide(CombatSide.Player))
-        {
-            if (creature.Monster is Roroka && creature.PetOwner == this.Owner)
-            {
-                roroka = creature;
-                break;
-            }
-        }
+        Creature roroka = GetRoroka();
 
         uint? rorokaId = roroka?.CombatId;
         await RorokaCmd.SummonOrHeal(this.CombatState, rorokaId, DynamicVars.Power<RorokaGrowthPower>().BaseValue, this.Owner);
+        
+        roroka = GetRoroka();
         
         await PowerCmd.Apply<RorokaGrowthPower>(
             roroka, 
@@ -44,5 +38,18 @@ public class RorokaGrowthCard() : KurokaCard(2, CardType.Skill,
     protected override void OnUpgrade()
     {
         DynamicVars.Power<RorokaGrowthPower>().UpgradeValueBy(6M);
+    }
+
+    private Creature GetRoroka()
+    {
+        foreach (var creature in this.CombatState.GetCreaturesOnSide(CombatSide.Player))
+        {
+            if (creature.Monster is Roroka && creature.PetOwner == this.Owner)
+            {
+                return creature;
+            }
+        }
+
+        return null;
     }
 }

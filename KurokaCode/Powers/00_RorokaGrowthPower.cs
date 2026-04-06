@@ -1,4 +1,5 @@
 ﻿using Kuroka.KurokaCode.Pets;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.Logging;
@@ -30,7 +31,7 @@ public class RorokaGrowthPower : KurokaPower // (STS2 파워 베이스 클래스
         if (target is Roroka)
         {
             logger.Info("로로카 체크");
-            target.MaxHp += (int)amount;   
+            CreatureCmd.GainMaxHp(target, amount);
         }
         
         return base.BeforePowerAmountChanged(power, amount, target, applier, cardSource);
