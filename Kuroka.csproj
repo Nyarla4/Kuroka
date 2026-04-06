@@ -109,6 +109,7 @@
         <Folder Include="Kuroka\images\card_portraits\big\"/>
         <Folder Include="Kuroka\images\powers\big\"/>
         <Folder Include="Kuroka\images\relics\big\"/>
+        <Folder Include="scenes\" />
     </ItemGroup>
 
     <Target Name="CheckDependencyPaths">
