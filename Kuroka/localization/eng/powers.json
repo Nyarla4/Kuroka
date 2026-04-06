@@ -8,7 +8,7 @@
   "KUROKA-ROROKA_POWER.description": "로로카가 모든 종류의 피해를 대신 받습니다.",
   "KUROKA-ROROKA_POWER.smartDescription": "로로카가 모든 종류의 피해를 대신 받습니다.",
   "KUROKA-ROROKA_POWER.title": "로로카",
-  "KUROKA-ROROKA_GROWTH_POWER.description": "로로카의 체력이 얼마만큼 증가했습니다.",
-  "KUROKA-ROROKA_GROWTH_POWER.smartDescription": "로로카의 체력이 얼마만큼 증가했습니다.",
-  "KUROKA-ROROKA_GROWTH_POWER.title": "로로카 성장"
+  "KUROKA-RORO_CUTE_POWER.description": "턴 시작 시 로로카의 체력이 남아있다면 무작위 적에게 약화를 겁니다.",
+  "KUROKA-RORO_CUTE_POWER.smartDescription": "턴 시작 시 로로카의 체력이 남아있다면 무작위 적에게 약화를 겁니다.",
+  "KUROKA-RORO_CUTE_POWER.title": "로로카식 애교"
 }
