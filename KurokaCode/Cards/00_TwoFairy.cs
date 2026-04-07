@@ -22,6 +22,12 @@ public class TwoFairy() : KurokaCard(0, CardType.Attack,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
+        if (play.Target == null)
+        {
+            logger.Warn($"[{this.Id}] 공격 타겟 없음.");
+            return;
+        }
+        
         for ( int i = 0 ; i < 2 ; i ++) {
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .FromCard(this)

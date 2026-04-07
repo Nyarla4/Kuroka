@@ -21,6 +21,12 @@ public class SuperStrike() : KurokaCard(1, CardType.Attack, CardRarity.Uncommon,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
+        if (play.Target == null)
+        {
+            logger.Warn($"[{this.Id}] 공격 타겟 없음.");
+            return;
+        }
+        
         CustomCreatureCmd.PlayAudio("audio/super_strike");
 
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)

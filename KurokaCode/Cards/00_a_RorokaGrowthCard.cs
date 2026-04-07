@@ -1,9 +1,11 @@
 ﻿using Kuroka.KurokaCode.Commands;
 using Kuroka.KurokaCode.Pets;
+using Kuroka.KurokaCode.Powers;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Kuroka.KurokaCode.Cards;
 
@@ -34,4 +36,9 @@ public abstract class RorokaGrowthCard(int cost, CardRarity rarity) : KurokaCard
 
         return null;
     }
+    
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => 
+    [
+        HoverTipFactory.FromPower<RorokaPower>()
+    ];
 }

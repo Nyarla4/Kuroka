@@ -4,6 +4,7 @@ using BaseLib.Utils;
 using Kuroka.KurokaCode.Character;
 using Kuroka.KurokaCode.Extensions;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Logging;
 
 namespace Kuroka.KurokaCode.Cards;
 
@@ -11,6 +12,8 @@ namespace Kuroka.KurokaCode.Cards;
 public abstract class KurokaCard(int cost, CardType type, CardRarity rarity, TargetType target) :
     CustomCardModel(cost, type, rarity, target)
 {
+    protected Logger logger = new Logger("KurokaCard", LogType.Actions);
+    
     //Image size:
     //Normal art: 1000x760 (Using 500x380 should also work, it will simply be scaled.)
     //Full art: 606x852

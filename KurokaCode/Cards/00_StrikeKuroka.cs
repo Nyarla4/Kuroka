@@ -13,9 +13,6 @@ namespace Kuroka.KurokaCode.Cards;
   
 public class StrikeKuroka() : KurokaCard(1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy)
 {
-    
-    private static readonly Logger logger = new Logger("StrikeKuroka", LogType.Generic);
-    
     protected override HashSet<CardTag> CanonicalTags
     {
         get => new HashSet<CardTag>() { CardTag.Strike };

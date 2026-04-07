@@ -27,13 +27,18 @@ public class SikabaneOdori() : KurokaCard(1, CardType.Attack, CardRarity.Common,
         this.DynamicVars.Damage.BaseValue = damage;
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this)
-            .TargetingAllOpponents(this.CombatState)
+            .TargetingAllOpponents(this.CombatState!)
             .WithAttackerAnim("Cast", 0.5f)
             .Execute(choiceContext);
-        DamageVar damageVarm = DynamicVars["MinDamage"] as DamageVar;
-        damageVarm.BaseValue = damageVarm.BaseValue + DynamicVars["Increase"].BaseValue;
-        DamageVar damageVarM = DynamicVars["MaxDamage"] as DamageVar;
-        damageVarM.BaseValue = damageVarM.BaseValue + DynamicVars["Increase"].BaseValue;
+        
+        if (DynamicVars["MinDamage"] is DamageVar damageVarMin)
+        {
+            damageVarMin.BaseValue += DynamicVars["Increase"].BaseValue;
+        }
+        if (DynamicVars["MaxDamage"] is DamageVar damageVarMax)
+        {
+            damageVarMax.BaseValue += DynamicVars["Increase"].BaseValue;
+        }
     }
 
     protected override void OnUpgrade()

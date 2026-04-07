@@ -11,9 +11,6 @@ namespace Kuroka.KurokaCode.Cards;
 
 public class Poker() : KurokaCard(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
 {
-    
-    private static readonly Logger logger = new Logger("StrikeKuroka", LogType.Generic);
-    
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new DamageVar(10M, ValueProp.Move),
         new PowerVar<StrengthPower>(1M)
@@ -23,7 +20,13 @@ public class Poker() : KurokaCard(1, CardType.Attack, CardRarity.Uncommon, Targe
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        if (play.Target.Monster.IntendsToAttack) {
+        if (play.Target == null)
+        {
+            logger.Warn($"[{this.Id}] 공격 타겟 없음.");
+            return;
+        }
+        
+        if (play.Target.Monster!.IntendsToAttack) {
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .FromCard(this)
                 .Targeting(play.Target)
