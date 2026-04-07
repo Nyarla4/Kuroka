@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4bl4ot5prgxb"
-path="res://.godot/imported/roroka.png-545fb3aae8fa7b5f3dd918f61a3cdc36.ctex"
+uid="uid://c44sh1y8l0gp"
+path="res://.godot/imported/standing.png-38dcb3bda20d305f2dd2fbbbffa8341d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/image/roroka.png"
-dest_files=["res://.godot/imported/roroka.png-545fb3aae8fa7b5f3dd918f61a3cdc36.ctex"]
+source_file="res://resources/kuroka/image/standing.png"
+dest_files=["res://.godot/imported/standing.png-38dcb3bda20d305f2dd2fbbbffa8341d.ctex"]
 
 [params]
 

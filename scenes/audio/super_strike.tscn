@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bcm1k073lj2ye"]
 
-[ext_resource type="AudioStream" uid="uid://fhtrltrbawdw" path="res://resources/audio/kuroka/02_superstrike.mp3" id="1_nqi21"]
+[ext_resource type="AudioStream" uid="uid://fhtrltrbawdw" path="res://resources/kuroka/audio/02_superstrike.mp3" id="1_nqi21"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer"]
 stream = ExtResource("1_nqi21")

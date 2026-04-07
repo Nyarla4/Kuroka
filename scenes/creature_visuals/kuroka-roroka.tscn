@@ -1,26 +1,83 @@
-[gd_scene load_steps=2 format=3 uid="uid://dv7nn6reneiwo"]
+[gd_scene load_steps=5 format=3 uid="uid://dv7nn6reneiwo"]
 
-[ext_resource type="Texture2D" uid="uid://c4bl4ot5prgxb" path="res://resources/image/roroka.png" id="1_2ysv3"]
+[ext_resource type="Texture2D" uid="uid://c4bl4ot5prgxb" path="res://resources/kuroka/image/roroka.png" id="1_2ysv3"]
+[ext_resource type="Texture2D" uid="uid://ypnncukar2h" path="res://resources/kuroka/image/dead_roroka.png" id="2_hdddy"]
+[ext_resource type="Script" uid="uid://cuj06i07qgd3p" path="res://scenes/creature_visuals/visuals-roroka.gd" id="3_ff8at"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2ysv3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2ysv3")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2ysv3")
+}],
+"loop": false,
+"name": &"cast",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hdddy")
+}],
+"loop": false,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2ysv3")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2ysv3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [node name="KurokaRoroka" type="Node2D"]
 
-[node name="Visuals" type="Sprite2D" parent="."]
+[node name="ExVisuals" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, -105)
+visible = false
+position = Vector2(0, -30)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_2ysv3")
 
 [node name="Bounds" type="Control" parent="."]
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
-offset_left = -120.0
-offset_top = -210.0
-offset_right = 120.0
+offset_left = -35.0
+offset_top = -65.0
+offset_right = 35.0
+offset_bottom = 5.0
 
 [node name="CenterPos" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, -70)
+position = Vector2(0, -20)
 
 [node name="IntentPos" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, -220)
+position = Vector2(0, -65)
+
+[node name="Visuals" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -30)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_2ysv3")
+animation = &"die"
+autoplay = "idle"
+script = ExtResource("3_ff8at")

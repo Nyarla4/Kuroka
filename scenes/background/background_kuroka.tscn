@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bqnop1ytr4xun"]
 
-[ext_resource type="Texture2D" uid="uid://c1h8ocrarbgy" path="res://resources/image/temp_mk_charBG.png" id="1_xcx32"]
+[ext_resource type="Texture2D" uid="uid://c1h8ocrarbgy" path="res://resources/kuroka/image/temp_mk_charBG.png" id="1_xcx32"]
 
 [node name="BackgroundKuroka" type="Control"]
 layout_mode = 3

@@ -51,4 +51,6 @@ public class Kuroka : PlaceholderCharacterModel
     public override string CustomCharacterSelectLockedIconPath => "char_select_char_name_locked.png".CharacterUiPath();
     public override string CustomMapMarkerPath => "map_marker_char_name.png".CharacterUiPath();
     public override string CustomCharacterSelectBg => SceneHelper.GetScenePath("background/background_kuroka");
+    
+    public override string CustomVisualPath => "res://scenes/creature_visuals/kuroka.tscn";
 }

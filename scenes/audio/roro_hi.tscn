@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://3cto0el6g6sr"]
 
-[ext_resource type="AudioStream" uid="uid://db6tpr1ggq3rm" path="res://resources/audio/kuroka/00_rorohi.mp3" id="1_luhme"]
+[ext_resource type="AudioStream" uid="uid://db6tpr1ggq3rm" path="res://resources/kuroka/audio/00_rorohi.mp3" id="1_luhme"]
 
 [node name="RoroHi" type="AudioStreamPlayer"]
 stream = ExtResource("1_luhme")

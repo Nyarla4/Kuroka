@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dl6h0qaccp84k" path="res://images/vfx/vfx_attack_slash/vfx_attack_slash_01.png" id="3_r8n4l"]
 [ext_resource type="Texture2D" uid="uid://c7ct8lsjvmu0y" path="res://images/vfx/vfx_attack_slash/vfx_attack_slash_02.png" id="4_mhtlu"]
 [ext_resource type="Texture2D" uid="uid://c443xj1rqssmj" path="res://images/vfx/vfx_attack_slash/vfx_attack_slash_03.png" id="5_qiihm"]
-[ext_resource type="AudioStream" uid="uid://fhtrltrbawdw" path="res://resources/audio/kuroka/02_superstrike.mp3" id="6_4ma5h"]
+[ext_resource type="AudioStream" uid="uid://fhtrltrbawdw" path="res://resources/kuroka/audio/02_superstrike.mp3" id="6_4ma5h"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gskkd"]
 animations = [{

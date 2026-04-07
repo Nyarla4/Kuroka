@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1bq1oqd7odvs"]
+
+[ext_resource type="Texture2D" uid="uid://c44sh1y8l0gp" path="res://resources/kuroka/image/standing.png" id="1_y6j2m"]
+
+[node name="Kuroka" type="Node2D"]
+
+[node name="Visuals" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -100)
+scale = Vector2(0.167, 0.167)
+texture = ExtResource("1_y6j2m")
+
+[node name="Bounds" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -58.0
+offset_top = -221.0
+offset_right = 40.0
+offset_bottom = 6.0
