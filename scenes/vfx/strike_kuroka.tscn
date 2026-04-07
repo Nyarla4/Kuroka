@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://wqmw2obeubh3"]
 
-[ext_resource type="AudioStream" uid="uid://bob8ednar7i6g" path="res://resources/audio/kurokastrike.mp3" id="1_0cxpm"]
+[ext_resource type="AudioStream" uid="uid://bob8ednar7i6g" path="res://resources/audio/kuroka/00_strike.mp3" id="1_0cxpm"]
 [ext_resource type="Script" uid="uid://bqka7hgiy2ode" path="res://scenes/vfx/strike_kuroka.gd" id="1_yhned"]
 [ext_resource type="Texture2D" uid="uid://c375qm46lcbvg" path="res://images/vfx/vfx_attack_slash/vfx_attack_slash_00.png" id="2_ofjje"]
 [ext_resource type="Texture2D" uid="uid://dl6h0qaccp84k" path="res://images/vfx/vfx_attack_slash/vfx_attack_slash_01.png" id="3_6tslu"]
