@@ -28,7 +28,7 @@ public class SecomMasada() : KurokaCard(3, CardType.Power,
         );
     }
 
-    protected override void OnUpgrade() { //Havoc 참조해서 코스트 감소 확인, 
+    protected override void OnUpgrade() { 
         this.EnergyCost.UpgradeBy(-1);
     }
 }

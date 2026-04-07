@@ -1,18 +1,34 @@
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Models;
 
 namespace Kuroka.KurokaCode.Cards;
 
 public class TheLongThing() : KurokaCard(1, CardType.Skill, CardRarity.Common, TargetType.None)
 {
-//소멸카드 아무거나 찾아서 소멸 처리
-//단조카드 아무거나 찾아서 Preview랑 카드생성 처리
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        
+        var card = (CardModel)ModelDb.Get<RoroHi>().MutableClone();
+        card.Owner = this.Owner; 
+        CardPileAddResult combat = await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, true);
     }
 
-    protected override void OnUpgrade() {
+    protected override void OnUpgrade()
+    {
         this.EnergyCost.UpgradeBy(-1);
     }
+
+    public static IEnumerable<IHoverTip> FromForge()
+    {
+        List<IHoverTip> items = new List<IHoverTip>();
+        items.AddRange(HoverTipFactory.FromCardWithCardHoverTips<RoroHi>());
+        return items;
+    }
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => FromForge();
+    //protected override void OnUpgrade() => this.RemoveKeyword(CardKeyword.Exhaust);
 }
