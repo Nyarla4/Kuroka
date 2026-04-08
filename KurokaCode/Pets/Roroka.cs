@@ -1,9 +1,13 @@
 using BaseLib.Abstracts;
+using BaseLib.Patches.Content;
+using MegaCrit.Sts2.Core.Entities.Cards;
 
 namespace Kuroka.KurokaCode.Pets;
 
 public class Roroka : CustomPetModel
 {
+	[CustomEnum] public static CardTag RorokaTag;
+	
 	public Roroka() : base(true)
 	{
 	}

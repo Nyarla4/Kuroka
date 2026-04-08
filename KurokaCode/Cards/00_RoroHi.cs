@@ -14,11 +14,11 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace Kuroka.KurokaCode.Cards;
 
-public class RoroHi() : KurokaCard(2, CardType.Skill,
+public class RoroHi() : RorokaCard(2, CardType.Skill,
     CardRarity.Basic, TargetType.None)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new ("Roroka", 15M)];
-
+    
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
@@ -43,9 +43,4 @@ public class RoroHi() : KurokaCard(2, CardType.Skill,
     {
         DynamicVars["Roroka"].UpgradeValueBy(6M);
     }
-    
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => 
-    [
-        HoverTipFactory.FromPower<RorokaPower>()
-    ];
 }

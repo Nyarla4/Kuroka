@@ -7,7 +7,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace Kuroka.KurokaCode.Cards;
 
-public class SecomMasada() : KurokaCard(3, CardType.Power,
+public class SecomMasada() : WitchCard(3, CardType.Power,
     CardRarity.Rare, TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<SecomMasadaPower>(3M)];
