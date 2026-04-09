@@ -18,7 +18,7 @@ public class DiaTomo() : WitchCard(2, CardType.Power, CardRarity.Rare, TargetTyp
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        PowerModel pow = Owner.Creature.GetPower<DelusionFactorPower>();
+        PowerModel? pow = Owner.Creature.GetPower<DelusionFactorPower>();
         if(IsWitch) {
             DynamicVars.Power<DexterityPower>().BaseValue = pow.Amount / 2;
         }
@@ -28,7 +28,7 @@ public class DiaTomo() : WitchCard(2, CardType.Power, CardRarity.Rare, TargetTyp
                 this.Owner.Creature, 
                 this
         );
-        if(pow != null && pow.Amount >= 5) {
+        if(pow is { Amount: >= 5 }) {
             await PowerCmd.Apply<BufferPower>(
                 this.Owner.Creature, 
                 1,
