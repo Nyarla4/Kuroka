@@ -4,13 +4,14 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Kuroka.KurokaCode.Cards;
 
-public class Chocomint() : KurokaCard(0, CardType.Skill,
+public class Strawberry() : KurokaCard(0, CardType.Skill,
     CardRarity.Token, TargetType.None)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new EnergyVar(1)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(10M,ValueProp.Move)];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
@@ -18,11 +19,16 @@ public class Chocomint() : KurokaCard(0, CardType.Skill,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        PlayerCmd.GainEnergy(DynamicVars.Energy.IntValue, Owner);
+        await CreatureCmd.GainBlock(
+            this.Owner.Creature, 
+            this.DynamicVars.Block.BaseValue, 
+            this.DynamicVars.Block.Props, 
+            play
+        );
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Energy.UpgradeValueBy(1M);
+        DynamicVars.Block.UpgradeValueBy(2M);
     }
 }
