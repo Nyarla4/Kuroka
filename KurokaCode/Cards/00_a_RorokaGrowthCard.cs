@@ -19,6 +19,8 @@ namespace Kuroka.KurokaCode.Cards;
 /// </summary>
 public abstract class RorokaGrowthCard(int cost, CardRarity rarity) : RorokaCard(cost, CardType.Power, rarity, TargetType.Self)
 {
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [Roroka.RorokaGrowth];
+    
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
