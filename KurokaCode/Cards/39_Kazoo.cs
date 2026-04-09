@@ -12,7 +12,7 @@ public class Kazoo() : KurokaCard(1, CardType.Skill, CardRarity.Common, TargetTy
     public override bool GainsBlock => true; 
     
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new("DrawCount", 2M),
+        new CardsVar(2),
         new BlockVar(6M, ValueProp.Move)
     ];
 
@@ -20,7 +20,7 @@ public class Kazoo() : KurokaCard(1, CardType.Skill, CardRarity.Common, TargetTy
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await CardPileCmd.Draw(choiceContext, DynamicVars["DrawCount"].BaseValue, this.Owner);
+        await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, this.Owner);
 
         await CustomCreatureCmd.Defend(
             this.Owner.Creature,

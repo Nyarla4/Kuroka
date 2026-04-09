@@ -28,5 +28,11 @@ public class Cutie() : KurokaCard(2, CardType.Skill, CardRarity.Rare, TargetType
 
     protected override void OnUpgrade() =>
         this.DynamicVars.Power<RegenPower>().UpgradeValueBy(2M);
+    
+    
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => 
+    [
+        HoverTipFactory.FromPower<RegenPower>()
+    ];
 }
 

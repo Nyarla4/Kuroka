@@ -3,6 +3,7 @@ using Kuroka.KurokaCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace Kuroka.KurokaCode.Cards;
@@ -28,4 +29,10 @@ public class Jujutsu() : KurokaCard(0, CardType.Skill, CardRarity.Token, TargetT
     }
 
     protected override void OnUpgrade() => this.DynamicVars.Power<MajinaiPower>().UpgradeValueBy(6M);
+    
+    
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => 
+    [
+        HoverTipFactory.FromPower<MajinaiPower>()
+    ];
 }
