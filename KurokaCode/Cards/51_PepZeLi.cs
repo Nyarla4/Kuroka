@@ -15,7 +15,8 @@ public class PepZeLi() : KurokaCard(1, CardType.Skill, CardRarity.Uncommon, Targ
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new BlockVar(7M, ValueProp.Move),
-        new PowerVar<PepZeLiPower>(1M)
+        new PowerVar<PepZeLiPower>(1M),
+        new EnergyVar(1)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -43,6 +44,7 @@ public class PepZeLi() : KurokaCard(1, CardType.Skill, CardRarity.Uncommon, Targ
 
     protected override void OnUpgrade() {
         DynamicVars.Power<PepZeLiPower>().UpgradeValueBy(1M);
+        DynamicVars.Energy.UpgradeValueBy(1M);
     }
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => 
