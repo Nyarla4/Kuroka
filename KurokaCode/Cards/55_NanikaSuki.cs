@@ -33,19 +33,21 @@ public class NanikaSuki() : KurokaCard(0, CardType.Skill,
                     card = (CardModel)ModelDb.Get<Chocomint>().MutableClone();
                     break;
                 case 1:
+                    card = (CardModel)ModelDb.Get<Cookiecream>().MutableClone();
                     break;
                 case 2:
+                    card = (CardModel)ModelDb.Get<Strawberry>().MutableClone();
                     break;
             }
             if (IsUpgraded)
             {
                 CardCmd.Upgrade(card);
             }
+            card.Owner = Owner;
+            CombatState.AddCard(card);
 
             CardPileAddResult combat = await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, true);
         }
-        
-        //지옥검 참조해서 획득 처리
     }
 
     protected override void OnUpgrade()

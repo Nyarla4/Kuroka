@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5lu7deuyu43n"
-path="res://.godot/imported/SixArms_p.png-2620005c1a30191aa67bc718f0c4a0ae.ctex"
+uid="uid://bbq1p6pwkykn8"
+path="res://.godot/imported/three_meter.png-1c82a0cb1d3a7c11cfa86e3fda147396.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Kuroka/images/card_portraits/SixArms_p.png"
-dest_files=["res://.godot/imported/SixArms_p.png-2620005c1a30191aa67bc718f0c4a0ae.ctex"]
+source_file="res://Kuroka/images/card_portraits/big/three_meter.png"
+dest_files=["res://.godot/imported/three_meter.png-1c82a0cb1d3a7c11cfa86e3fda147396.ctex"]
 
 [params]
 

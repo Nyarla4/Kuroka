@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://purlma6xynho"
-path="res://.godot/imported/SixArms.png-fa870f1696deb470bf59bd387b68f5bc.ctex"
+uid="uid://cmiemmcsq7v0f"
+path="res://.godot/imported/six_arms.png-b8d6fb3eb9347c27faeb643b6693d25e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Kuroka/images/card_portraits/SixArms.png"
-dest_files=["res://.godot/imported/SixArms.png-fa870f1696deb470bf59bd387b68f5bc.ctex"]
+source_file="res://Kuroka/images/card_portraits/six_arms.png"
+dest_files=["res://.godot/imported/six_arms.png-b8d6fb3eb9347c27faeb643b6693d25e.ctex"]
 
 [params]
 

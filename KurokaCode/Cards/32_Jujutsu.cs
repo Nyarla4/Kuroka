@@ -7,7 +7,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace Kuroka.KurokaCode.Cards;
 
-public class Jujutsu() : KurokaCard(1, CardType.Skill, CardRarity.Token, TargetType.AnyEnemy)
+public class Jujutsu() : KurokaCard(0, CardType.Skill, CardRarity.Token, TargetType.AnyEnemy)
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [
         CardKeyword.Exhaust

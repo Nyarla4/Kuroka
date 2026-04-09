@@ -131,7 +131,7 @@
   "KUROKA-NANIKA_SUKI.title": "나니카스키",
   "KUROKA-STRAWBERRY.description": "[gold]방어도[/gold]를 {Block} 얻습니다.",
   "KUROKA-STRAWBERRY.title": "스트로베리",
-  "KUROKA-CHOCOMINT.description": "에너지를 {Magic:diff()} 얻습니다.",
+  "KUROKA-CHOCOMINT.description": "에너지를 {Energy} 얻습니다.",
   "KUROKA-CHOCOMINT.title": "쵸코민트",
   "KUROKA-COOKIECREAM.description": "카드를 {Cards} 장 뽑습니다.",
   "KUROKA-COOKIECREAM.title": "쿠키앤크림",

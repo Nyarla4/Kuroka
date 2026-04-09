@@ -24,12 +24,15 @@ public class DokkaItte() : KurokaCard(2, CardType.Skill, CardRarity.Common, Targ
         for (int i = 0; i < cardCount; i++)
         {
             var card = (CardModel)ModelDb.Get<Jujutsu>().MutableClone();
+            card.Owner = Owner;
             if (IsUpgraded)
             {
                 CardCmd.Upgrade(card);
             }
-
-            CardPileAddResult combat = await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, true);
+            CombatState.AddCard(card);
+            await CardPileCmd.AddGeneratedCardToCombat(card,
+                PileType.Hand,
+                true);
         }
     }
 
