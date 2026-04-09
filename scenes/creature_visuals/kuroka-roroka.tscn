@@ -60,24 +60,24 @@ texture = ExtResource("1_2ysv3")
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
-offset_left = -35.0
-offset_top = -65.0
-offset_right = 35.0
-offset_bottom = 5.0
+offset_left = -62.0
+offset_top = -116.0
+offset_right = 63.0
+offset_bottom = 9.0
 
 [node name="CenterPos" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, -20)
+position = Vector2(0, -31.25)
 
 [node name="IntentPos" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, -65)
+position = Vector2(0, -115)
 
 [node name="Visuals" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, -30)
-scale = Vector2(0.3, 0.3)
+position = Vector2(0, -52.25)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_2ysv3")
-animation = &"die"
+animation = &"cast"
 autoplay = "idle"
 script = ExtResource("3_ff8at")
