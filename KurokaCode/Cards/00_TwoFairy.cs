@@ -3,6 +3,7 @@ using Kuroka.KurokaCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -53,4 +54,8 @@ public class TwoFairy() : KurokaCard(0, CardType.Attack,
     {
         
     }
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [
+        HoverTipFactory.FromPower<MajinaiPower>(),
+        HoverTipFactory.FromPower<WeakPower>()
+    ];
 }

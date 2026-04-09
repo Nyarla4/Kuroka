@@ -13,6 +13,8 @@ namespace Kuroka.KurokaCode.Cards;
 public class Majinai() : KurokaCard(1, CardType.Skill,
     CardRarity.Rare, TargetType.AnyEnemy)
 {
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
+    
     protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<MajinaiPower>(32M)];
 
     protected override async Task OnPlay(

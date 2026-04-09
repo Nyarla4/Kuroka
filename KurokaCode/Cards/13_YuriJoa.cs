@@ -13,8 +13,8 @@ public class YuriJoa() : WitchCard(1, CardType.Skill,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new PowerVar<DelusionFactorPower>(1M),
-        new("CommonDraw", 2M),
-        new("WitchDraw", 4M)
+        new CardsVar("CommonDraw", 2),
+        new CardsVar("WitchDraw", 4)
     ];
 
     protected override async Task OnPlay(

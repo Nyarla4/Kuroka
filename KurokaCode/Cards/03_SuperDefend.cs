@@ -6,7 +6,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Kuroka.KurokaCode.Cards;
 
-public class SuperDefend() : KurokaCard(1, CardType.Skill, CardRarity.Basic, TargetType.Self)
+public class SuperDefend() : KurokaCard(1, CardType.Skill, CardRarity.Common, TargetType.Self)
 {
     public override bool GainsBlock => true;
 
