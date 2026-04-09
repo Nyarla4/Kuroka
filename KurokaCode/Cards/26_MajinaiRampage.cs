@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace Kuroka.KurokaCode.Cards;
@@ -44,8 +45,12 @@ public class MajinaiRampage() : KurokaCard(1, CardType.Skill, CardRarity.Common,
 
     protected override void OnUpgrade()
     {
-        // Java: upgradeMagicNumber(2)
         this.DynamicVars.Power<MajinaiPower>().UpgradeValueBy(2M);
     }
+    
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => 
+    [
+        HoverTipFactory.FromPower<MajinaiPower>()
+    ];
 }
 

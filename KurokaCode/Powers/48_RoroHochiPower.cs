@@ -8,7 +8,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Kuroka.KurokaCode.Powers;
 
-public class RoroCutePower : KurokaPower
+public class RoroHochiPower : KurokaPower
 {
     public override PowerType Type => PowerType.Buff;
 
@@ -20,16 +20,10 @@ public class RoroCutePower : KurokaPower
         {
             return;
         }
-        
-        Creature? enemy = player.RunState.Rng.CombatTargets.NextItem(CombatState.HittableEnemies);
-        if (enemy != null)
-        {
-            await PowerCmd.Apply<WeakPower>(
-                enemy,
-                Amount,
-                Target,
-                null);
-        }
+        await DamageCmd.Attack(Amount)
+            .FromCard(null)
+            .TargetingAllOpponents(this.CombatState)
+            .Execute(choiceContext);
     }
     public override bool ShouldPowerBeRemovedOnDeath(PowerModel power) => power!=this;
 }

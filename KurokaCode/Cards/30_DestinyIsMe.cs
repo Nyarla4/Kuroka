@@ -11,6 +11,8 @@ namespace Kuroka.KurokaCode.Cards;
 
 public class DestinyIsMe() : KurokaCard(2, CardType.Skill, CardRarity.Common, TargetType.Self)
 {
+    public override bool GainsBlock => true; 
+    
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new BlockVar(16M, ValueProp.Move),
         new PowerVar<DestinyPower>(7M)

@@ -9,6 +9,8 @@ namespace Kuroka.KurokaCode.Cards;
 
 public class Kazoo() : KurokaCard(1, CardType.Skill, CardRarity.Common, TargetType.None)
 {
+    public override bool GainsBlock => true; 
+    
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new("DrawCount", 2M),
         new BlockVar(6M, ValueProp.Move)

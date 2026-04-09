@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace Kuroka.KurokaCode.Cards;
@@ -13,14 +14,13 @@ public class MajinaiDraw() : KurokaCard(1, CardType.Skill, CardRarity.Common, Ta
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new("DrawCount", 2M),
-        new PowerVar<MajinaiPower>(4M) // secondMagic: amount of Majinai applied
+        new PowerVar<MajinaiPower>(4M)
     ];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        // Java: DrawCardAction(magicNumber) where magicNumber is drawCount.
         await CardPileCmd.Draw(choiceContext, DynamicVars["DrawCount"].BaseValue, this.Owner);
 
         var alive = this.CombatState!
@@ -49,9 +49,13 @@ public class MajinaiDraw() : KurokaCard(1, CardType.Skill, CardRarity.Common, Ta
 
     protected override void OnUpgrade()
     {
-        // Java: upgradeMagicNumber(1), upgradeSecondMagic(2)
         this.DynamicVars["DrawCount"].UpgradeValueBy(1M);
         this.DynamicVars.Power<MajinaiPower>().UpgradeValueBy(2M);
     }
+    
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => 
+    [
+        HoverTipFactory.FromPower<MajinaiPower>()
+    ];
 }
 

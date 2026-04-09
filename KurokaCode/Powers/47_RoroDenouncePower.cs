@@ -8,7 +8,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Kuroka.KurokaCode.Powers;
 
-public class RoroCutePower : KurokaPower
+public class RoroDenouncePower : KurokaPower
 {
     public override PowerType Type => PowerType.Buff;
 
@@ -24,7 +24,7 @@ public class RoroCutePower : KurokaPower
         Creature? enemy = player.RunState.Rng.CombatTargets.NextItem(CombatState.HittableEnemies);
         if (enemy != null)
         {
-            await PowerCmd.Apply<WeakPower>(
+            await PowerCmd.Apply<VulnerablePower>(
                 enemy,
                 Amount,
                 Target,

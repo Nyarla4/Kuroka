@@ -3,6 +3,7 @@ using Kuroka.KurokaCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace Kuroka.KurokaCode.Cards;
@@ -31,4 +32,9 @@ public class SecomMasada() : WitchCard(3, CardType.Power,
     protected override void OnUpgrade() { 
         this.EnergyCost.UpgradeBy(-1);
     }
+    
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => 
+    [
+        .. base.ExtraHoverTips, HoverTipFactory.FromPower<SecomMasadaPower>()
+    ];
 }
