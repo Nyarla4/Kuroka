@@ -87,7 +87,7 @@
   "KUROKA-RORO_DENOUNCE.title": "로로카식 매도",
   "KUROKA-RORO_HOCHI.description": "[gold]로로카[/gold]의 최대체력이 {RorokaGrowth:diff()} 증가합니다.\n로로카가 살아있다면\n턴 시작 시 적 전체에게 피해를 {RoroHochiPower:diff()} 줍니다.",
   "KUROKA-RORO_HOCHI.title": "로로카 홋치",
-  "KUROKA-RORO_GLOWING.description": "[gold]로로카[/gold]의 최대체력이 {RorokaGrowth:diff()} 증가합니다.\n로로카가 살아있다면\n턴 시작 시 로로카의 체력을 {RoroGlowingPower:diff()} 회복합니다.",
+  "KUROKA-RORO_GLOWING.description": "[gold]로로카[/gold]의 최대체력이 {RorokaGrowth:diff()} 증가합니다.\n로로카가 살아있다면\n턴 종료 시 로로카의 체력을 {RoroGlowingPower:diff()} 회복합니다.",
   "KUROKA-RORO_GLOWING.title": "야광 로로카",
   "KUROKA-SPICY_NAKJI_KIMCHI_JOOK.description": "다음 턴 시작까지 [gold]주문[/gold]이 유지됩니다.",
   "KUROKA-SPICY_NAKJI_KIMCHI_JOOK.title": "매콤낙지김치죽",
