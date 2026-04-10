@@ -7,7 +7,6 @@ namespace Kuroka.KurokaCode.Pets;
 public class Roroka : CustomPetModel
 {
 	[CustomEnum] public static CardTag RorokaTag;
-	[CustomEnum] public static CardKeyword RorokaGrowth;
 	public Roroka() : base(true)
 	{
 	}

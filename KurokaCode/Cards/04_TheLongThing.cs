@@ -12,7 +12,7 @@ public class TheLongThing() : KurokaCard(1, CardType.Skill, CardRarity.Common, T
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var card = (CardModel)ModelDb.Get<RoroHi>().MutableClone();
+        var card = (CardModel)ModelDb.Get<TheThing1>().MutableClone();
         card.Owner = this.Owner; 
         CardPileAddResult combat = await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, true);
     }
@@ -22,13 +22,8 @@ public class TheLongThing() : KurokaCard(1, CardType.Skill, CardRarity.Common, T
         this.EnergyCost.UpgradeBy(-1);
     }
 
-    public static IEnumerable<IHoverTip> FromForge()
-    {
-        List<IHoverTip> items = new List<IHoverTip>();
-        items.AddRange(HoverTipFactory.FromCardWithCardHoverTips<RoroHi>());
-        return items;
-    }
-
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => FromForge();
-    //protected override void OnUpgrade() => this.RemoveKeyword(CardKeyword.Exhaust);
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => 
+    [
+        ..HoverTipFactory.FromCardWithCardHoverTips<TheThing1>()
+    ];
 }
