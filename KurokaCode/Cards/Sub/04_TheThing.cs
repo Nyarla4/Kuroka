@@ -6,7 +6,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace Kuroka.KurokaCode.Cards;
+namespace Kuroka.KurokaCode.Cards.Sub;
 
 public class TheThing() : KurokaCard(3, CardType.Attack, CardRarity.Token, TargetType.AllEnemies)
 {

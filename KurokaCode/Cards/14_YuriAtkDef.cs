@@ -1,11 +1,10 @@
 using BaseLib.Extensions;
+using Kuroka.KurokaCode.Cards.Abstract;
 using Kuroka.KurokaCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Kuroka.KurokaCode.Cards;
@@ -23,14 +22,7 @@ public class YuriAtkDef() : WitchCard(1, CardType.Skill,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        PowerModel ? pow = Owner.Creature.GetPower<DelusionFactorPower>();
-        bool isWitch = false;
-        if (pow is { Amount: >= 10 })
-        {
-            isWitch = true;
-        }
-
-        if(isWitch) {
+        if(IsWitch) {
             await PowerCmd.Apply<StrengthPower>(
                 this.Owner.Creature, 
                 1,

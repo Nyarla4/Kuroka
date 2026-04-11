@@ -1,4 +1,5 @@
 using BaseLib.Extensions;
+using Kuroka.KurokaCode.Cards.Abstract;
 using Kuroka.KurokaCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;

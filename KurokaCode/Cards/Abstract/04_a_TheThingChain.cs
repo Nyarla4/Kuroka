@@ -1,9 +1,11 @@
-using Kuroka.KurokaCode.Cards;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
+
+namespace Kuroka.KurokaCode.Cards.Abstract;
 
 public abstract class TheThingChainCard<TNext>(CardType type, TargetType target)
     : KurokaCard(0, type, CardRarity.Token, target)
@@ -24,11 +26,23 @@ public abstract class TheThingChainCard<TNext>(CardType type, TargetType target)
         PlayerChoiceContext choiceContext,
         CardPlay cardPlay)
     {
-        var next = (CardModel)ModelDb.Get<TNext>().MutableClone();
-        if (IsUpgraded) CardCmd.Upgrade(next);
-        next.Owner = Owner;
-        CombatState.AddCard(next);
-        await CardPileCmd.AddGeneratedCardToCombat(next, PileType.Deck, true);
+        var cardPool = new List<CardModel> { ModelDb.Get<TNext>() };
+    
+        var card = CardFactory.GetDistinctForCombat(
+            this.Owner, 
+            cardPool, 
+            1, 
+            this.Owner.RunState.Rng.CombatCardGeneration
+        ).FirstOrDefault();
+
+        if (card != null)
+        {
+            if (IsUpgraded)
+            {
+                CardCmd.Upgrade(card);
+            }
+            CardPileAddResult combat = await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Deck, true);
+        }
 
         if (IsUpgraded)
             await CardPileCmd.Draw(choiceContext, 1M, this.Owner);

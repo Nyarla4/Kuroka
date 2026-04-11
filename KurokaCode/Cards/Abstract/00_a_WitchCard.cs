@@ -1,11 +1,9 @@
 using Kuroka.KurokaCode.Powers;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Logging;
-using MegaCrit.Sts2.Core.Models;
 
-namespace Kuroka.KurokaCode.Cards;
+namespace Kuroka.KurokaCode.Cards.Abstract;
 
 /// <summary>
 /// 마녀화(Witchification) 기믹이 있는 카드들의 공통 부모 클래스입니다.
@@ -20,7 +18,7 @@ public abstract class WitchCard(int cost, CardType type, CardRarity rarity, Targ
     // ==========================================================
     // 개별 카드의 OnPlay에서 복붙하던 코드를 지우고 이 프로퍼티 하나만 호출합니다.
     // TODO: 추후 특정 유물 등으로 발동 조건 스택(현재 10)이 변경될 경우 여기만 수정하면 됩니다.
-    public virtual bool IsWitch => this.Owner?.Creature?.GetPower<DelusionFactorPower>()?.Amount >= 10;
+    public bool IsWitch => this.Owner?.Creature?.GetPower<DelusionFactorPower>()?.Amount >= 10;
 
     // ==========================================================
     // 2. [누락 요소 해결] 동적 타겟팅 지원 (XXMoe 등)

@@ -1,4 +1,5 @@
 using BaseLib.Extensions;
+using Kuroka.KurokaCode.Cards.Abstract;
 using Kuroka.KurokaCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -6,7 +7,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
-namespace Kuroka.KurokaCode.Cards;
+namespace Kuroka.KurokaCode.Cards.Sub;
 public class TheThing2() : TheThingChainCard<TheThing3>(CardType.Skill, TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>

@@ -1,4 +1,5 @@
 
+using Kuroka.KurokaCode.Cards.Abstract;
 using Kuroka.KurokaCode.Commands;
 using Kuroka.KurokaCode.Pets;
 using MegaCrit.Sts2.Core.Combat;
@@ -7,7 +8,7 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
-namespace Kuroka.KurokaCode.Cards;
+namespace Kuroka.KurokaCode.Cards.Sub;
 
 public class TheThing3() : TheThingChainCard<TheThing4>(CardType.Skill, TargetType.Self)
 {

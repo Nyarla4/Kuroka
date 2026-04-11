@@ -1,3 +1,4 @@
+using Kuroka.KurokaCode.Cards.Abstract;
 using Kuroka.KurokaCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -23,18 +24,13 @@ public class SixArms() : WitchCard(1, CardType.Attack,
         CardPlay play)
     {
         PowerModel? pow = Owner.Creature.GetPower<DelusionFactorPower>();
-        bool isWitch = false;
-        if (pow is { Amount: >= 10 })
-        {
-            isWitch = true;
-        }
-
+        
         if (play.Target == null)
         {
             logger.Warn($"[{this.Id}] 공격 타겟 없음.");
             return;
         }
-        this.DynamicVars.Damage.BaseValue = isWitch ? (decimal)pow.Amount : DynamicVars["common"].BaseValue;
+        this.DynamicVars.Damage.BaseValue = IsWitch ? (decimal)pow!.Amount : DynamicVars["common"].BaseValue;
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this)
             .Targeting(play.Target)

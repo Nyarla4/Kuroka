@@ -2,11 +2,12 @@ using BaseLib.Extensions;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace Kuroka.KurokaCode.Cards;
+namespace Kuroka.KurokaCode.Cards.Sub;
 
 public class ColorBlack() : KurokaCard(0, CardType.Attack, CardRarity.Token, TargetType.AnyEnemy)
 {
@@ -47,4 +48,8 @@ public class ColorBlack() : KurokaCard(0, CardType.Attack, CardRarity.Token, Tar
         DynamicVars.Damage.UpgradeValueBy(2M);
         this.AddKeyword(CardKeyword.Retain);
     }
+    
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [
+        HoverTipFactory.FromPower<WeakPower>()
+    ];
 }

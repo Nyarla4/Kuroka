@@ -1,3 +1,4 @@
+using Kuroka.KurokaCode.Cards.Sub;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -16,8 +17,8 @@ public class NumberKurokaLike() : KurokaCard(1, CardType.Skill,
     {
         List<CardModel> list = new()
         {
-            Owner.Creature.CombatState.CreateCard(new NumberFour(), Owner),
-            Owner.Creature.CombatState.CreateCard(new NumberSix(), Owner),
+            Owner.Creature.CombatState.CreateCard(ModelDb.Get<NumberFour>(), Owner),
+            Owner.Creature.CombatState.CreateCard(ModelDb.Get<NumberSix>(), Owner),
         };
         
         if (IsUpgraded)

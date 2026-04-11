@@ -1,10 +1,10 @@
 using BaseLib.Extensions;
+using Kuroka.KurokaCode.Cards.Abstract;
 using Kuroka.KurokaCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Kuroka.KurokaCode.Cards;
@@ -21,13 +21,6 @@ public class JingaiJoa() : WitchCard(1, CardType.Attack,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        PowerModel? pow = Owner.Creature.GetPower<DelusionFactorPower>();
-        bool isWitch = false;
-        if (pow is { Amount: >= 10 })
-        {
-            isWitch = true;
-        }
-
         if (play.Target == null)
         {
             logger.Warn($"[{this.Id}] 공격 타겟 없음.");
@@ -40,7 +33,7 @@ public class JingaiJoa() : WitchCard(1, CardType.Attack,
             .WithHitFx("vfx/strike_kuroka")
             .Execute(choiceContext);
 
-        if(isWitch) {
+        if(IsWitch) {
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .FromCard(this)
                 .Targeting(play.Target)

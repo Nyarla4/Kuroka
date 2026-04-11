@@ -1,4 +1,5 @@
 using BaseLib.Extensions;
+using Kuroka.KurokaCode.Cards.Abstract;
 using Kuroka.KurokaCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -21,18 +22,11 @@ public class YuriJoa() : WitchCard(1, CardType.Skill,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        PowerModel? pow = Owner.Creature.GetPower<DelusionFactorPower>();
-        bool isWitch = false;
-        if (pow is { Amount: >= 10 })
-        {
-            isWitch = true;
-        }
-
-        int drawAmount = (int)(isWitch?DynamicVars["CommonDraw"].BaseValue:DynamicVars["WitchDraw"].BaseValue);
+        int drawAmount = (int)(IsWitch?DynamicVars["CommonDraw"].BaseValue:DynamicVars["WitchDraw"].BaseValue);
 
         IEnumerable<CardModel> cardModels = await CardPileCmd.Draw(choiceContext, (Decimal) drawAmount, this.Owner);
 
-        if(!isWitch) {
+        if(IsWitch) {
             await PowerCmd.Apply<DelusionFactorPower>(
                 this.Owner.Creature, 
                 DynamicVars.Power<DelusionFactorPower>().BaseValue,

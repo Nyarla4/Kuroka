@@ -1,12 +1,11 @@
 using BaseLib.Extensions;
-using Kuroka.KurokaCode.Commands;
+using Kuroka.KurokaCode.Cards.Abstract;
 using Kuroka.KurokaCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Kuroka.KurokaCode.Cards;
@@ -22,13 +21,6 @@ public class ThreeMeter() : WitchCard(2, CardType.Skill, CardRarity.Common, Targ
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        PowerModel? pow = Owner.Creature.GetPower<DelusionFactorPower>();
-        bool isWitch = false;
-        if (pow is { Amount: >= 10 })
-        {
-            isWitch = true;
-        }
-        
         // 방어도 처리
         await CreatureCmd.GainBlock(
             this.Owner.Creature, 
@@ -39,7 +31,7 @@ public class ThreeMeter() : WitchCard(2, CardType.Skill, CardRarity.Common, Targ
 
         await PowerCmd.Apply<ThreeMeterPower>(
                 this.Owner.Creature, 
-                DynamicVars.Power<ThreeMeterPower>().BaseValue + (isWitch ? 1M : 0M),
+                DynamicVars.Power<ThreeMeterPower>().BaseValue + (IsWitch ? 1M : 0M),
                 this.Owner.Creature, 
                 this
         );

@@ -1,19 +1,18 @@
-
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace Kuroka.KurokaCode.Cards;
+namespace Kuroka.KurokaCode.Cards.Sub;
 
-public class Strawberry() : KurokaCard(0, CardType.Skill,
-    CardRarity.Token, TargetType.None)
+public class NumberFour() : KurokaCard(0, CardType.Skill, CardRarity.Token, TargetType.Self)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(10M,ValueProp.Move)];
-
+    public override bool GainsBlock => true;
+    
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
+    
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(4M, ValueProp.Move)];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
@@ -25,10 +24,11 @@ public class Strawberry() : KurokaCard(0, CardType.Skill,
             this.DynamicVars.Block.Props, 
             play
         );
+
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(2M);
+        this.AddKeyword(CardKeyword.Retain);
     }
 }
