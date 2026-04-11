@@ -36,7 +36,7 @@ public class RoroPunch() : RorokaCard(1, CardType.Attack, CardRarity.Uncommon, T
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this)
             .Targeting(play.Target)
-            .WithHitFx("vfx/strike_kuroka")
+            .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
     }
 

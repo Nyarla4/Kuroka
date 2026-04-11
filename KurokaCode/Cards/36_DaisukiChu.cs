@@ -13,7 +13,7 @@ public class DaisukiChu() : KurokaCard(3, CardType.Skill, CardRarity.Rare, Targe
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        CustomCreatureCmd.PlayAudio("audio/daisukichu");
+        //CustomCreatureCmd.PlayAudio("audio/daisukichu");
 
         await PowerCmd.Apply<NoDrawPower>(
             this.Owner.Creature,

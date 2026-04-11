@@ -34,7 +34,7 @@ public class Possible() : WitchCard(1, CardType.Attack,
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .FromCard(this)
                 .Targeting(play.Target)
-                .WithHitFx("vfx/strike_kuroka")
+                .WithHitFx("vfx/vfx_attack_slash")
                 .Execute(choiceContext);
             var after = play.Target.CurrentHp;
             if(!IsWitch) {

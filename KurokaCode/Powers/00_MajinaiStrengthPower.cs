@@ -42,8 +42,19 @@ public class MajinaiStrengthPower : KurokaPower
         if (power is not MajinaiPower) return;
         if (power.Owner.Side != CombatSide.Enemy) return;
 
-        int newCount = MajinaiPower.GetMajinaiedCreatures(
-            CombatState.GetCreaturesOnSide(CombatSide.Enemy)).Count;
+        await RecalculateFromExternal(null);
+    }
+
+    public override async Task AfterDeath(PlayerChoiceContext choiceContext, Creature creature, bool wasRemovalPrevented, float deathAnimLength)
+    {
+        if (creature.Side != CombatSide.Enemy) return;
+        await RecalculateFromExternal(choiceContext);
+    }
+
+    public async Task RecalculateFromExternal(PlayerChoiceContext? choiceContext)
+    {
+        int newCount = GetMajinaiedCreatures(
+            CombatState.GetCreaturesOnSide(CombatSide.Enemy));
 
         if (newCount <= 0)
         {

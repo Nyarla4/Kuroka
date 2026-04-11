@@ -34,7 +34,7 @@ public class SixArms() : WitchCard(1, CardType.Attack,
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this)
             .Targeting(play.Target)
-            .WithHitFx("vfx/strike_kuroka")
+            .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
         // Headbutt, Aggression, Dredge 참조해서 버린 카드 더미에서 카드 가져오는 거 확인
     }

@@ -35,14 +35,14 @@ public class XXMoe() : WitchCard(1, CardType.Skill,
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .FromCard(this)
                 .Targeting(play.Target)
-                .WithHitFx("vfx/strike_kuroka")
+                .WithHitFx("vfx/vfx_attack_slash")
                 .Execute(choiceContext);
             if (play.Target.CurrentHp <= play.Target.MaxHp / 2)
             {
                 await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                     .FromCard(this)
                     .Targeting(play.Target)
-                    .WithHitFx("vfx/strike_kuroka")
+                    .WithHitFx("vfx/vfx_attack_slash")
                     .Execute(choiceContext);
             }
         }

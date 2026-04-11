@@ -25,7 +25,7 @@ public class PepZeLi() : KurokaCard(1, CardType.Skill, CardRarity.Uncommon, Targ
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .FromCard(this)
                 .Targeting(Owner.Creature)
-                .WithHitFx("vfx/strike_kuroka")
+                .WithHitFx("vfx/vfx_attack_slash")
                 .Execute(choiceContext);
         }
         await CreatureCmd.GainBlock(

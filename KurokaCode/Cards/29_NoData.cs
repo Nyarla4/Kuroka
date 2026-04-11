@@ -31,7 +31,7 @@ public class NoData() : KurokaCard(1, CardType.Skill, CardRarity.Common, TargetT
             return;
         }
         // NoData
-        CustomCreatureCmd.PlayAudio("audio/defend_kuroka");
+        //CustomCreatureCmd.PlayAudio("audio/defend_kuroka");
         
         // 방어도 처리
         await CreatureCmd.GainBlock(

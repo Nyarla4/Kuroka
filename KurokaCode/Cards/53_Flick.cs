@@ -40,7 +40,7 @@ public class Flick() : WitchCard(2, CardType.Attack, CardRarity.Uncommon, Target
         await DamageCmd.Attack((IsWitch ? DynamicVars["Witch"].BaseValue : DynamicVars["Common"].BaseValue) * multiplier)
             .FromCard(this)
             .Targeting(play.Target)
-            .WithHitFx("vfx/strike_kuroka")
+            .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
     }
 

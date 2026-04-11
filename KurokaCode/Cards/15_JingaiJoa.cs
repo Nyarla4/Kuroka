@@ -30,14 +30,14 @@ public class JingaiJoa() : WitchCard(1, CardType.Attack,
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this)
             .Targeting(play.Target)
-            .WithHitFx("vfx/strike_kuroka")
+            .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
 
         if(IsWitch) {
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .FromCard(this)
                 .Targeting(play.Target)
-                .WithHitFx("vfx/strike_kuroka")
+                .WithHitFx("vfx/vfx_attack_slash")
                 .Execute(choiceContext);
         }
         else {

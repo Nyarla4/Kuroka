@@ -31,8 +31,8 @@ public class KurokaPunch() : KurokaCard(1, CardType.Attack, CardRarity.Common, T
                 await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                     .FromCard(this)
                     .Targeting(play.Target)
-                    .WithHitFx("vfx/strike_kuroka")
-                    .Execute(choiceContext);                
+                    .WithHitFx("vfx/vfx_attack_slash")
+                    .Execute(choiceContext);
             }
         }
         else
@@ -40,7 +40,7 @@ public class KurokaPunch() : KurokaCard(1, CardType.Attack, CardRarity.Common, T
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .FromCard(this)
                 .Targeting(play.Target)
-                .WithHitFx("vfx/strike_kuroka")
+                .WithHitFx("vfx/vfx_attack_slash")
                 .Execute(choiceContext);
         }
     }

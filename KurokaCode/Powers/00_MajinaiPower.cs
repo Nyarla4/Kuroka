@@ -71,6 +71,10 @@ public class MajinaiPower : KurokaPower
                 else
                 {
                     await PowerCmd.Remove<MajinaiPower>(this.Owner);
+                    
+                    MajinaiStrengthPower? strengthPower = player.GetPower<MajinaiStrengthPower>();
+                    if (strengthPower != null)
+                        await strengthPower.RecalculateFromExternal(choiceContext);
                 }
             }
         }

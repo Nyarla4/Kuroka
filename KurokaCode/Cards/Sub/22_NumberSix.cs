@@ -23,12 +23,10 @@ public class NumberSix() : KurokaCard(0, CardType.Attack, CardRarity.Token, Targ
             return;
         }
         
-        CustomCreatureCmd.PlayAudio("audio/super_strike");
-
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this)
             .Targeting(play.Target)
-            .WithHitFx("vfx/silent_strike_kuroka")
+            .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
     }
 

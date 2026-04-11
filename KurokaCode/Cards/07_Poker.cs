@@ -30,7 +30,7 @@ public class Poker() : KurokaCard(1, CardType.Attack, CardRarity.Uncommon, Targe
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .FromCard(this)
                 .Targeting(play.Target)
-                .WithHitFx("vfx/strike_kuroka")
+                .WithHitFx("vfx/vfx_attack_slash")
                 .Execute(choiceContext);
         }
         else {

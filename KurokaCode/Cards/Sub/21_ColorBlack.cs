@@ -32,7 +32,7 @@ public class ColorBlack() : KurokaCard(0, CardType.Attack, CardRarity.Token, Tar
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this)
             .Targeting(play.Target)
-            .WithHitFx("vfx/silent_strike_kuroka")
+            .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
 
         await PowerCmd.Apply<WeakPower>(
