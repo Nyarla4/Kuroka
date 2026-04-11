@@ -32,4 +32,27 @@ public class MajinaiStrengthPower : KurokaPower
     {
         return this.Owner != dealer || !props.IsPoweredAttack() ? 0M : GetMajinaiedCreatures(CombatState.GetCreaturesOnSide(CombatSide.Enemy));
     }
+    
+    public override async Task AfterPowerAmountChanged(
+        PowerModel power,
+        Decimal amount,
+        Creature? applier,
+        CardModel? cardSource)
+    {
+        if (power is not MajinaiPower) return;
+        if (power.Owner.Side != CombatSide.Enemy) return;
+
+        int newCount = MajinaiPower.GetMajinaiedCreatures(
+            CombatState.GetCreaturesOnSide(CombatSide.Enemy)).Count;
+
+        if (newCount <= 0)
+        {
+            await PowerCmd.Remove<MajinaiStrengthPower>(this.Owner);
+            return;
+        }
+
+        decimal diff = newCount - this.Amount;
+        if (diff != 0)
+            await PowerCmd.ModifyAmount(this, diff, null, null);
+    }
 }

@@ -68,7 +68,7 @@
   "KUROKA-RORO_GLOWING_POWER.smartDescription": "턴 종료 시 로로카의 체력이 남아있다면 로로카의 체력을 {Amount} 회복합니다.",
   
   "KUROKA-NANIKA_FORM_POWER.title": "나니카",
-  "KUROKA-NANIKA_FORM_POWER.description": "턴 시작 시 무작위 나니카 특제 포션을 개 획득합니다.",
+  "KUROKA-NANIKA_FORM_POWER.description": "턴 시작 시 무작위 나니카 특제 포션을 획득합니다.",
   "KUROKA-NANIKA_FORM_POWER.smartDescription": "턴 시작 시 무작위 나니카 특제 포션을 {Amount}개 획득합니다.",
   
   "KUROKA-PEP_ZE_LI_POWER.title": "펩제라",

@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Logging;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using Logger = MegaCrit.Sts2.Core.Logging.Logger;
 
@@ -72,6 +73,31 @@ public class MajinaiPower : KurokaPower
                     await PowerCmd.Remove<MajinaiPower>(this.Owner);
                 }
             }
+        }
+    }
+    
+    public override async Task AfterPowerAmountChanged(
+        PowerModel power,
+        Decimal amount,
+        Creature? applier,
+        CardModel? cardSource)
+    {
+        if (power != this) return;
+        if (this.Owner.Side != CombatSide.Enemy) return;
+
+        Creature? player = CombatState
+            .GetCreaturesOnSide(CombatSide.Player)
+            .FirstOrDefault();
+        if (player == null) return;
+
+        int count = GetMajinaiedCreatures(
+            CombatState.GetCreaturesOnSide(CombatSide.Enemy)).Count;
+
+        // 플레이어에게 MajinaiStrengthPower가 없으면 최초 부여
+        // 있으면 MajinaiStrengthPower.AfterPowerAmountChanged가 알아서 재계산
+        if (player.GetPower<MajinaiStrengthPower>() == null && count > 0)
+        {
+            await PowerCmd.Apply<MajinaiStrengthPower>(player, count, null, null);
         }
     }
 }
