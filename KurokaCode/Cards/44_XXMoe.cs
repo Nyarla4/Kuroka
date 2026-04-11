@@ -62,9 +62,4 @@ public class XXMoe() : WitchCard(1, CardType.Skill,
         DynamicVars.Power<XXMoePower>().UpgradeValueBy(1M);
         DynamicVars.Damage.UpgradeValueBy(4M);
     }
-    
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => 
-    [
-        .. base.ExtraHoverTips, HoverTipFactory.FromPower<XXMoePower>()
-    ];
 }

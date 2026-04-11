@@ -46,9 +46,4 @@ public class PepZeLi() : KurokaCard(1, CardType.Skill, CardRarity.Uncommon, Targ
         DynamicVars.Power<PepZeLiPower>().UpgradeValueBy(1M);
         DynamicVars.Energy.UpgradeValueBy(1M);
     }
-
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => 
-    [
-        HoverTipFactory.FromPower<PepZeLiPower>()
-    ];
 }

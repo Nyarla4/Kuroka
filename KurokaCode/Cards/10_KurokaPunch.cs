@@ -3,6 +3,7 @@ using Kuroka.KurokaCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 
@@ -48,4 +49,9 @@ public class KurokaPunch() : KurokaCard(1, CardType.Attack, CardRarity.Common, T
     {
         this.DynamicVars.Damage.UpgradeValueBy(2M);
     }
+    
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => 
+    [
+        HoverTipFactory.FromPower<MajinaiPower>()
+    ];
 }

@@ -10,9 +10,11 @@ using Logger = MegaCrit.Sts2.Core.Logging.Logger;
 
 namespace Kuroka.KurokaCode.Cards;
 
-public class SpicyNakjiKimchiJook() : KurokaCard(1, CardType.Power,
+public class SpicyNakjiKimchiJook() : KurokaCard(1, CardType.Skill,
     CardRarity.Rare, TargetType.Self)
 {
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
+    
     private Logger _logger = new Logger("SpicyNakjiKimchiJook", LogType.Actions);
 
     protected override async Task OnPlay(
@@ -33,6 +35,7 @@ public class SpicyNakjiKimchiJook() : KurokaCard(1, CardType.Power,
 
     protected override void OnUpgrade()
     {
+        this.RemoveKeyword(CardKeyword.Exhaust);
     }
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>

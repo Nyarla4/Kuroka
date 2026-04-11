@@ -35,7 +35,6 @@ public class MajinaiAmplify() : KurokaCard(1, CardType.Power, CardRarity.Uncommo
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => 
     [
-        HoverTipFactory.FromPower<MajinaiPower>(),
         HoverTipFactory.FromPower<MajinaiAmplifyPower>()
     ];
 }

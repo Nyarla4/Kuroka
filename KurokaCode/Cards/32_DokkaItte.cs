@@ -42,12 +42,8 @@ public class DokkaItte() : KurokaCard(2, CardType.Skill, CardRarity.Common, Targ
         this.EnergyCost.UpgradeBy(-1);
     }
 
-    public static IEnumerable<IHoverTip> Tips()
-    {
-        List<IHoverTip> items = new List<IHoverTip>();
-        items.AddRange(HoverTipFactory.FromCardWithCardHoverTips<Jujutsu>());
-        return items;
-    }
-
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => Tips();
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        ..HoverTipFactory.FromCardWithCardHoverTips<Jujutsu>(IsUpgraded)
+    ];
 }

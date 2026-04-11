@@ -1,4 +1,5 @@
 using BaseLib.Extensions;
+using HarmonyLib;
 using Kuroka.KurokaCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -50,12 +51,17 @@ public class TwoFairy() : KurokaCard(0, CardType.Attack,
         }
     }
 
-    protected override void OnUpgrade()
-    {
-        
+    protected override IEnumerable<IHoverTip> ExtraHoverTips {
+        get
+        {
+            // 기본적으로 항상 추가되는 팁
+            yield return HoverTipFactory.FromPower<MajinaiPower>();
+
+            // 강화되었을 때만 추가되는 팁
+            if (IsUpgraded)
+            {
+                yield return HoverTipFactory.FromPower<WeakPower>();
+            }
+        }
     }
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [
-        HoverTipFactory.FromPower<MajinaiPower>(),
-        HoverTipFactory.FromPower<WeakPower>()
-    ];
 }

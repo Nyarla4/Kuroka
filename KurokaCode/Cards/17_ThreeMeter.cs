@@ -38,9 +38,4 @@ public class ThreeMeter() : WitchCard(2, CardType.Skill, CardRarity.Common, Targ
     }
 
     protected override void OnUpgrade() => this.DynamicVars.Power<ThreeMeterPower>().UpgradeValueBy(1M);
-
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => 
-    [
-        .. base.ExtraHoverTips, HoverTipFactory.FromPower<ThreeMeterPower>()
-    ];
 }

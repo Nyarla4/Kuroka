@@ -44,6 +44,6 @@ public class DestinyIsMe() : KurokaCard(2, CardType.Skill, CardRarity.Common, Ta
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => 
     [
-        HoverTipFactory.FromPower<DestinyPower>()
+        HoverTipFactory.FromPower<MajinaiPower>()
     ];
 }
