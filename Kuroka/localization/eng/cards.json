@@ -50,7 +50,7 @@
   "KUROKA-KUROKA_HIT_TWICE.title": "쿠로카는 두번 찌른다",
   "KUROKA-KUROKA_HIT_TWICE.description": "피해를 {Damage:diff()} 줍니다.\n2번 반복합니다.",
   "KUROKA-LOST_DELUSION.title": "로스트=딜루전",
-  "KUROKA-LOST_DELUSION.description": "손의 카드를 모두 [gold]소멸[/gold]시킵니다. [gold]소멸[/gold]한만큼 무작위 카드를 생성합니다.\n생성된 카드의 비용을 1 감소합니다.",
+  "KUROKA-LOST_DELUSION.description": "손의 카드를 모두 [gold]소멸[/gold]시킵니다. [gold]소멸[/gold]한만큼 무작위 카드를 생성합니다.\n이번 턴동안 생성된 카드의 비용을 1 감소합니다.",
   "KUROKA-YURI_JOA.title": "백합좋아",
   "KUROKA-YURI_JOA.description": "카드를 {CommonDraw:diff()} 장 뽑습니다.\n[blue]망상인자[/blue]를 {DelusionFactorPower:diff()} 얻습니다.",
   "KUROKA-YURI_ATK_DEF.title": "백합공수론",

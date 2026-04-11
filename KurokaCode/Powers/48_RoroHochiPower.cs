@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Kuroka.KurokaCode.Powers;
 
@@ -16,9 +17,13 @@ public class RoroHochiPower : RorokaAdditionalPower
         {
             return;
         }
-        await DamageCmd.Attack(Amount)
-            .FromCard(null)
-            .TargetingAllOpponents(this.CombatState)
-            .Execute(choiceContext);
+        await CreatureCmd.Damage(
+            choiceContext,
+            this.CombatState.HittableEnemies,
+            Amount,
+            ValueProp.Unpowered,
+            this.Owner,
+            null
+        );
     }
 }

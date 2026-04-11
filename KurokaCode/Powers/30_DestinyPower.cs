@@ -23,9 +23,8 @@ public class DestinyPower : KurokaPower
         CardModel? cardSource)
     {
         if (target != this.Owner || dealer == null || dealer == this.Owner) return;
-        if (result.TotalDamage <= 0) return;
-
-        decimal majinaiAmount = Amount * this.Amount; // buff * stacks
+        
+        decimal majinaiAmount = Amount; // buff * stacks
         await PowerCmd.Apply<MajinaiPower>(
             dealer,
             majinaiAmount,

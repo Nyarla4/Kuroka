@@ -15,7 +15,7 @@ public class DestinyIsMe() : KurokaCard(2, CardType.Skill, CardRarity.Common, Ta
     
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new BlockVar(16M, ValueProp.Move),
-        new PowerVar<DestinyPower>(7M)
+        new PowerVar<DestinyPower>(6M)
     ];
 
     protected override async Task OnPlay(
@@ -29,7 +29,7 @@ public class DestinyIsMe() : KurokaCard(2, CardType.Skill, CardRarity.Common, Ta
             play);
 
         await PowerCmd.Apply<DestinyPower>(
-            play.Target, 
+            Owner.Creature,
             DynamicVars.Power<DestinyPower>().BaseValue,
             this.Owner.Creature, 
             this

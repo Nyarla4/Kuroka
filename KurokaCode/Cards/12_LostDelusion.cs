@@ -23,9 +23,16 @@ public class LostDelusion() : KurokaCard(1, CardType.Skill, CardRarity.Common, T
         int cardCount = list.Count;
         foreach (CardModel card2 in list)
             await CardCmd.Exhaust(choiceContext, card2);
+        List<CardModel> list2 = this.Owner.Character.CardPool.AllCards.ToList();
+        list2.RemoveAll(c => c.Rarity == CardRarity.Token);
         for (int i = 0; i < cardCount; i++)
         {
-            CardModel? card = CardFactory.GetDistinctForCombat(this.Owner, this.Owner.Character.CardPool.GetUnlockedCards(this.Owner.UnlockState, this.Owner.RunState.CardMultiplayerConstraint), 1, this.Owner.RunState.Rng.CombatCardGeneration).FirstOrDefault<CardModel>();
+            CardModel? card = CardFactory.GetDistinctForCombat(
+                this.Owner,
+                list2,
+                1,
+                this.Owner.RunState.Rng.CombatCardGeneration)
+                .FirstOrDefault<CardModel>();
             if (card == null)
                 continue;
             card.EnergyCost.SetThisTurn(card.EnergyCost.Canonical-1);
