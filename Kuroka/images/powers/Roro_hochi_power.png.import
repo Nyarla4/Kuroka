@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjdh04fupvqov"
-path="res://.godot/imported/Roro_hochi_power.png-ce3786abd78a2ca7bf02ec6f5af27108.ctex"
+uid="uid://b7vaeix3ws6a5"
+path="res://.godot/imported/roro_hochi_power.png-8e0d78e6668a6e82670b8adcf20ebb13.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Kuroka/images/powers/Roro_hochi_power.png"
-dest_files=["res://.godot/imported/Roro_hochi_power.png-ce3786abd78a2ca7bf02ec6f5af27108.ctex"]
+source_file="res://Kuroka/images/powers/roro_hochi_power.png"
+dest_files=["res://.godot/imported/roro_hochi_power.png-8e0d78e6668a6e82670b8adcf20ebb13.ctex"]
 
 [params]
 

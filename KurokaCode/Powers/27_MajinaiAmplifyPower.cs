@@ -21,9 +21,9 @@ public class MajinaiAmplifyPower : KurokaPower
         Creature? target,
         CardModel? cardSource)
     {
-        if (power is MajinaiPower && cardSource.Owner.Creature == this.Owner)
-            return Amount;
-        return 0M;
+        if (power is MajinaiPower && giver == this.Owner)
+            return amount+Amount;
+        return amount;
     }
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
