@@ -2,6 +2,7 @@
 using Kuroka.KurokaCode.Extensions;
 using Godot;
 using Kuroka.KurokaCode.Cards;
+using Kuroka.KurokaCode.Relics;
 using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models;
@@ -35,7 +36,7 @@ public class Kuroka : PlaceholderCharacterModel
 
     public override IReadOnlyList<RelicModel> StartingRelics =>
     [
-        ModelDb.Relic<BurningBlood>()
+        ModelDb.Relic<KurokaStartRelic>()
     ];
 
     public override CardPoolModel CardPool => ModelDb.CardPool<KurokaCardPool>();

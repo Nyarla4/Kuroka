@@ -1,3 +1,8 @@
 {
-  
+  "KUROKA-KUROKA_START_RELIC.title": "청초",
+  "KUROKA-KUROKA_START_RELIC.flavor": "리액트KR에서는 여기밖에 없습니다.",
+  "KUROKA-KUROKA_START_RELIC.description": "전투 시작 시 무작위 적 하나에게 [gold]주문[/gold]을 1 걸고 [blue]망상인자[/blue]를 1 얻습니다.",
+  "KUROKA-KUROKA_ANCIENT_RELIC.title": "초청초",
+  "KUROKA-KUROKA_ANCIENT_RELIC.description": "초청초는 거꾸로해도 초청초.",
+  "KUROKA-KUROKA_ANCIENT_RELIC.flavor": "전투 시작 시 모든 적에게 [gold]주문[/gold]을 1 겁니다."
 }

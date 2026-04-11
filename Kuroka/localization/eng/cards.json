@@ -5,6 +5,8 @@
   "KUROKA-STRIKE_KUROKA.description": "피해를 {Damage:diff()} 줍니다.",
   "KUROKA-RORO_HI.title": "로로하이",
   "KUROKA-RORO_HI.description": "[gold]로로카[/gold]를 {Roroka:diff()} 회복합니다.",
+  "KUROKA-RORO_SUPER_HI.title": "로로슈퍼하이",
+  "KUROKA-RORO_SUPER_HI.description": "[gold]로로카[/gold]를 {Roroka:diff()} 회복합니다.",
   "KUROKA-TWO_FAIRY.title": "2시 요정",
   "KUROKA-TWO_FAIRY.description": "피해를 {Damage:diff()} 줍니다.\n[gold]주문[/gold]을 {MajinaiPower:diff()} 겁니다.{IfUpgraded:show:\n약화를 {WeakPower:diff()} 겁니다.|}\n2번 반복합니다.",
   "KUROKA-MAJINAI.title": "주문",
