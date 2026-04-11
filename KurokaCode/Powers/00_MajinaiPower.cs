@@ -1,10 +1,7 @@
-﻿using BaseLib.Extensions;
-using Godot;
-using Kuroka.KurokaCode.Relics;
+﻿using Kuroka.KurokaCode.Relics;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
-using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Logging;
@@ -45,6 +42,9 @@ public class MajinaiPower : KurokaPower
 
         int overKill = Amount - Owner.CurrentHp;
         
+        Creature? player = Owner.CombatState.GetCreaturesOnSide(CombatSide.Player).FirstOrDefault();
+        var combatState = Owner.CombatState;
+        
         IEnumerable<DamageResult> damageResults = await CreatureCmd.Damage(
             choiceContext,
             Owner,
@@ -52,28 +52,29 @@ public class MajinaiPower : KurokaPower
             ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move,
             Owner
         );
-
-        Creature? player = Owner.CombatState.GetCreaturesOnSide(CombatSide.Player).FirstOrDefault();
         
         if (this.Owner.IsDead && overKill > 0)
         {
-            //오버킬된 경우
             if (player != null)
             {
-                Player p = player.Player;
                 MagicStickHammerRelic? playerRelic = player.Player.GetRelic<MagicStickHammerRelic>();
                 if (playerRelic != null)
                 {
-                    var rng = p.RunState.Rng.Niche;
+                    var rng = player.Player.RunState.Rng.Niche;
 
-                    var alive = this.CombatState.CreaturesOnCurrentSide.ToList();
-                    alive.RemoveAll(c => c.IsDead);
-                    
+                    // Owner 제외하고 살아있는 적만 선택
+                    var alive = combatState
+                        .GetCreaturesOnSide(CombatSide.Enemy)
+                        .Where(c => c.IsAlive && c != this.Owner)
+                        .ToList();
+
+                    // ⬇ 살아있는 적이 없으면 전파 불가
+                    if (alive.Count == 0) return;
+
                     Creature target = alive[rng.NextInt(0, alive.Count)];
                     await PowerCmd.Apply<MajinaiPower>(target, overKill, this.Owner, null);
                 }
             }
-            //_logger.Info($"overkilled {this.Owner.Name}, overed: {overKill}, actual overed: {this.Owner.CurrentHp}");
         }
         
         if (this.Owner.IsAlive && overKill < 0) // 주문 피해를 받고 살아있는 경우
@@ -89,13 +90,13 @@ public class MajinaiPower : KurokaPower
                 else
                 {
                     await PowerCmd.Remove<MajinaiPower>(this.Owner);
-                    
-                    MajinaiStrengthPower? strengthPower = player.GetPower<MajinaiStrengthPower>();
-                    if (strengthPower != null)
-                        await strengthPower.RecalculateFromExternal(choiceContext);
                 }
             }
         }
+        
+        MajinaiStrengthPower? strengthPower = player?.GetPower<MajinaiStrengthPower>();
+        if (strengthPower != null)
+            await strengthPower.RecalculateFromExternal(choiceContext);
     }
     
     public override async Task AfterPowerAmountChanged(
