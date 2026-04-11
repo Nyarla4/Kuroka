@@ -1,4 +1,6 @@
-﻿using MegaCrit.Sts2.Core.Commands;
+﻿using BaseLib.Utils;
+using Kuroka.KurokaCode.Character;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Potions;
@@ -13,7 +15,10 @@ public class NanikaSaintPotion : KurokaPotion
     public override PotionRarity Rarity => PotionRarity.Rare;
     public override PotionUsage Usage => PotionUsage.CombatOnly;
     public override TargetType TargetType => TargetType.AnyPlayer;
-    
+
+    public override string CustomPackedImagePath => "Kuroka/images/potions/nanika_saint_potion.png";
+    public override string CustomPackedOutlinePath => "Kuroka/images/potions/nanika_saint_potion_outline.png";
+
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
         PotionModel.AssertValidForTargetedPotion(target);

@@ -12,3 +12,12 @@ public class KurokaPotionPool : CustomPotionPoolModel
     public override string BigEnergyIconPath => "charui/big_energy.png".ImagePath();
     public override string TextEnergyIconPath => "charui/text_energy.png".ImagePath();
 }
+
+public class NanikaPotionPool : CustomPotionPoolModel
+{
+    public override Color LabOutlineColor => Kuroka.Color;
+
+
+    public override string BigEnergyIconPath => "charui/big_energy.png".ImagePath();
+    public override string TextEnergyIconPath => "charui/text_energy.png".ImagePath();
+}
