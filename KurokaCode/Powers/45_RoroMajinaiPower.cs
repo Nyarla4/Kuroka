@@ -9,12 +9,8 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Kuroka.KurokaCode.Powers;
 
-public class RoroMajinaiPower : KurokaPower
+public class RoroMajinaiPower : RorokaAdditionalPower
 {
-    public override PowerType Type => PowerType.Buff;
-
-    public override PowerStackType StackType => PowerStackType.Counter;
-
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {
         if (this.Owner.IsDead)
@@ -32,8 +28,6 @@ public class RoroMajinaiPower : KurokaPower
                 null);
         }
     }
-    
-    public override bool ShouldPowerBeRemovedOnDeath(PowerModel power) => power!=this;
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => 
     [

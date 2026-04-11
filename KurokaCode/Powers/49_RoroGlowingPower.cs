@@ -9,12 +9,8 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Kuroka.KurokaCode.Powers;
 
-public class RoroGlowingPower : KurokaPower
+public class RoroGlowingPower : RorokaAdditionalPower
 {
-    public override PowerType Type => PowerType.Buff;
-
-    public override PowerStackType StackType => PowerStackType.Counter;
-
     public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
     {
         if (this.Owner.IsDead || !side.Equals(CombatSide.Player))
@@ -24,5 +20,4 @@ public class RoroGlowingPower : KurokaPower
 
         await CreatureCmd.Heal(Owner, Amount);
     }
-    public override bool ShouldPowerBeRemovedOnDeath(PowerModel power) => power!=this;
 }

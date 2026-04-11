@@ -8,12 +8,8 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Kuroka.KurokaCode.Powers;
 
-public class RoroCutePower : KurokaPower
+public class RoroCutePower : RorokaAdditionalPower
 {
-    public override PowerType Type => PowerType.Buff;
-
-    public override PowerStackType StackType => PowerStackType.Counter;
-
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {
         if (this.Owner.IsDead)
@@ -31,5 +27,4 @@ public class RoroCutePower : KurokaPower
                 null);
         }
     }
-    public override bool ShouldPowerBeRemovedOnDeath(PowerModel power) => power!=this;
 }
