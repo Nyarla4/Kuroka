@@ -1,7 +1,10 @@
-﻿using Godot;
+﻿using BaseLib.Extensions;
+using Godot;
+using Kuroka.KurokaCode.Relics;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Logging;
@@ -50,16 +53,31 @@ public class MajinaiPower : KurokaPower
             Owner
         );
 
+        Creature? player = Owner.CombatState.GetCreaturesOnSide(CombatSide.Player).FirstOrDefault();
+        
         if (this.Owner.IsDead && overKill > 0)
         {
             //오버킬된 경우
+            if (player != null)
+            {
+                Player p = player.Player;
+                MagicStickHammerRelic? playerRelic = player.Player.GetRelic<MagicStickHammerRelic>();
+                if (playerRelic != null)
+                {
+                    var rng = p.RunState.Rng.Niche;
+
+                    var alive = this.CombatState.CreaturesOnCurrentSide.ToList();
+                    alive.RemoveAll(c => c.IsDead);
+                    
+                    Creature target = alive[rng.NextInt(0, alive.Count)];
+                    await PowerCmd.Apply<MajinaiPower>(target, overKill, this.Owner, null);
+                }
+            }
             //_logger.Info($"overkilled {this.Owner.Name}, overed: {overKill}, actual overed: {this.Owner.CurrentHp}");
         }
         
         if (this.Owner.IsAlive && overKill < 0) // 주문 피해를 받고 살아있는 경우
         {
-            Creature? player = Owner.CombatState.GetCreaturesOnSide(CombatSide.Player).FirstOrDefault();
-        
             if (player != null)
             {
                 SpicyNakjiKimchiJookPower? playerBuff = player.GetPower<SpicyNakjiKimchiJookPower>();
