@@ -13,7 +13,7 @@ public class MajinaiAmplify() : KurokaCard(1, CardType.Power, CardRarity.Uncommo
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<MajinaiAmplifyPower>(3M)
+        new PowerVar<MajinaiAmplifyPower>(1M)
     ];
 
     protected override async Task OnPlay(
