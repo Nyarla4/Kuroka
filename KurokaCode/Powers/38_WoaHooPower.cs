@@ -1,5 +1,6 @@
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
@@ -27,7 +28,7 @@ public class WoaHooPower : KurokaPower
         if (target.GetPower<MajinaiPower>() == null) return;
 
         this.Flash();
-        await CardPileCmd.Draw(choiceContext, Amount, this.Owner.PetOwner!);
+        await CardPileCmd.Draw(choiceContext, Amount, dealer.Player!);
     }
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>

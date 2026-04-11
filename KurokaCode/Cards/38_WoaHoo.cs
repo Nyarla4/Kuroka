@@ -11,7 +11,7 @@ namespace Kuroka.KurokaCode.Cards;
 public class WoaHoo() : KurokaCard(1, CardType.Power,
     CardRarity.Uncommon, TargetType.Self)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<WoaHooPower>(3M)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<WoaHooPower>(1M)];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
