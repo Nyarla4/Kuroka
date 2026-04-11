@@ -1,8 +1,5 @@
 ﻿using BaseLib.Extensions;
 using Kuroka.KurokaCode.Commands;
-using Kuroka.KurokaCode.Pets;
-using Kuroka.KurokaCode.Powers;
-using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -11,7 +8,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 
-namespace Kuroka.KurokaCode.Cards;
+namespace Kuroka.KurokaCode.Cards.Abstract;
 
 /// <summary>
 /// 로로카 최대체력 증가 카드 통합
@@ -31,24 +28,6 @@ public abstract class RorokaGrowthCard(int cost, CardRarity rarity) : RorokaCard
         }
         
         await RorokaCmd.AddMax(this.CombatState!, rorokaId, DynamicVars["RorokaGrowth"].BaseValue, this.Owner);
-    }
-
-    protected Creature? GetRoroka()
-    {
-        if (this.CombatState == null)
-        {
-            return null;
-        }
-        
-        foreach (var creature in this.CombatState!.GetCreaturesOnSide(CombatSide.Player))
-        {
-            if (creature.Monster is Roroka && creature.PetOwner == this.Owner)
-            {
-                return creature;
-            }
-        }
-
-        return null;
     }
     
     protected override void OnUpgrade()

@@ -16,15 +16,7 @@ public class TheThing3() : TheThingChainCard<TheThing4>(CardType.Skill, TargetTy
 
     protected override async Task ExecuteEffect(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        Creature? roroka = null;
-        foreach (var creature in this.CombatState!.GetCreaturesOnSide(CombatSide.Player))
-        {
-            if (creature.Monster is Roroka && creature.PetOwner == this.Owner)
-            {
-                roroka = creature;
-                break;
-            }
-        }
+        Creature? roroka = GetRoroka();
 
         uint? rorokaId = roroka?.CombatId;
         await RorokaCmd.Heal(this.CombatState, rorokaId, DynamicVars["Roroka"].BaseValue, this.Owner);

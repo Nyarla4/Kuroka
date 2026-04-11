@@ -4,7 +4,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Logging;
 
-namespace Kuroka.KurokaCode.Cards;
+namespace Kuroka.KurokaCode.Cards.Abstract;
 
 public abstract class RorokaCard(int cost, CardType type, CardRarity rarity, TargetType target) :
     KurokaCard(cost, type, rarity, target)

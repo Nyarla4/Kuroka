@@ -1,7 +1,9 @@
+using Kuroka.KurokaCode.Cards.Abstract;
 using Kuroka.KurokaCode.Pets;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -22,8 +24,7 @@ public class RoroPunch() : RorokaCard(1, CardType.Attack, CardRarity.Uncommon, T
             return;
         }
         
-        var roroka = this.CombatState!.GetCreaturesOnSide(CombatSide.Player)
-            .FirstOrDefault(c => c.Monster is Roroka && c.PetOwner == this.Owner);
+        Creature? roroka = GetRoroka();
 
         int damage = 0;
         if(roroka != null) {

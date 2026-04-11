@@ -1,4 +1,5 @@
-﻿using Kuroka.KurokaCode.Commands;
+﻿using Kuroka.KurokaCode.Cards.Abstract;
+using Kuroka.KurokaCode.Commands;
 using Kuroka.KurokaCode.Pets;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -18,17 +19,7 @@ public class RoroHi() : RorokaCard(2, CardType.Skill,
         CardPlay play)
     {
         CustomCreatureCmd.PlayAudio("audio/roro_hi");
-        
-        Creature? roroka = null;
-        foreach (var creature in this.CombatState!.GetCreaturesOnSide(CombatSide.Player))
-        {
-            if (creature.Monster is Roroka && creature.PetOwner == this.Owner)
-            {
-                roroka = creature;
-                break;
-            }
-        }
-
+        Creature? roroka = GetRoroka();
         uint? rorokaId = roroka?.CombatId;
         await RorokaCmd.Heal(this.CombatState, rorokaId, DynamicVars["Roroka"].BaseValue, this.Owner);
     }

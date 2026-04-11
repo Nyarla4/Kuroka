@@ -19,17 +19,9 @@ public class NandeWatashi() : KurokaCard(1, CardType.Skill,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {        
-        Creature? roroka = null;
-        foreach (var creature in this.CombatState!.GetCreaturesOnSide(CombatSide.Player))
-        {
-            if (creature.Monster is Roroka && creature.PetOwner == this.Owner)
-            {
-                roroka = creature;
-                break;
-            }
-        }
-
+        Creature? roroka = GetRoroka();
         uint? rorokaId = roroka?.CombatId;
+        
         await RorokaCmd.Heal(this.CombatState, rorokaId, DynamicVars["Roroka"].BaseValue, this.Owner);
 
         foreach (Creature enemy in CombatState.GetCreaturesOnSide(CombatSide.Enemy))

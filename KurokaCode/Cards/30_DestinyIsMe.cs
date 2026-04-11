@@ -22,12 +22,11 @@ public class DestinyIsMe() : KurokaCard(2, CardType.Skill, CardRarity.Common, Ta
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        //Atk 대신 Blck으로 수정
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this)
-            .Targeting(play.Target)
-            .WithHitFx("vfx/strike_kuroka")
-            .Execute(choiceContext);
+        await CreatureCmd.GainBlock(
+            Owner.Creature,
+            DynamicVars.Block.BaseValue,
+            DynamicVars.Block.Props,
+            play);
 
         await PowerCmd.Apply<DestinyPower>(
             play.Target, 

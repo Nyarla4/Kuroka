@@ -19,7 +19,7 @@ public class TheThing6() : TheThingChainCard<TheThing7>(CardType.Skill, TargetTy
     protected override async Task ExecuteEffect(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await PowerCmd.Apply<DexterityPower>(
-            cardPlay.Target, 
+            this.Owner.Creature, 
             DynamicVars.Power<DexterityPower>().BaseValue,
             this.Owner.Creature, 
             this

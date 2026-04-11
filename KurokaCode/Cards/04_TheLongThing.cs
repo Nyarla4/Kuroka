@@ -14,23 +14,12 @@ public class TheLongThing() : KurokaCard(1, CardType.Skill, CardRarity.Common, T
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var cardPool = new List<CardModel> { ModelDb.Get<TheThing1>() };
-    
-        var card = CardFactory.GetDistinctForCombat(
-            this.Owner, 
-            cardPool, 
-            1, 
-            this.Owner.RunState.Rng.CombatCardGeneration
-        ).FirstOrDefault();
+        var card = Owner.Creature.CombatState.CreateCard(ModelDb.Get<TheThing1>(), Owner);
 
-        if (card != null)
-        {
-            if (IsUpgraded)
-            {
-                CardCmd.Upgrade(card);
-            }
-            CardPileAddResult combat = await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Deck, true);
-        }
+        if (IsUpgraded)
+            CardCmd.Upgrade(card);
+        
+        await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, true);
     }
 
     protected override void OnUpgrade()

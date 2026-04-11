@@ -1,3 +1,4 @@
+using Kuroka.KurokaCode.Cards.Abstract;
 using Kuroka.KurokaCode.Pets;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
