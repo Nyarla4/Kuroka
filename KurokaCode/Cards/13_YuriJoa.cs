@@ -22,11 +22,11 @@ public class YuriJoa() : WitchCard(1, CardType.Skill,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        int drawAmount = (int)(IsWitch?DynamicVars["CommonDraw"].BaseValue:DynamicVars["WitchDraw"].BaseValue);
+        int drawAmount = (int)(IsWitch?DynamicVars["WitchDraw"].BaseValue:DynamicVars["CommonDraw"].BaseValue);
 
         IEnumerable<CardModel> cardModels = await CardPileCmd.Draw(choiceContext, (Decimal) drawAmount, this.Owner);
 
-        if(IsWitch) {
+        if(!IsWitch) {
             await PowerCmd.Apply<DelusionFactorPower>(
                 this.Owner.Creature, 
                 DynamicVars.Power<DelusionFactorPower>().BaseValue,

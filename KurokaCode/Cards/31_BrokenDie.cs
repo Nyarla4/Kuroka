@@ -1,5 +1,6 @@
 using BaseLib.Extensions;
 using Kuroka.KurokaCode.Powers;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -37,12 +38,7 @@ public class BrokenDie() : KurokaCard(1, CardType.Attack, CardRarity.Uncommon, T
             this
         );
     }
-
-    protected override void OnUpgrade()
-    {
-        
-    }
-
+    
     protected override IEnumerable<IHoverTip> ExtraHoverTips => 
     [
         HoverTipFactory.FromPower<MajinaiPower>()

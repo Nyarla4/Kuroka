@@ -15,11 +15,10 @@ public class TheLongThing() : KurokaCard(1, CardType.Skill, CardRarity.Common, T
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         var card = Owner.Creature.CombatState.CreateCard(ModelDb.Get<TheThing1>(), Owner);
-
-        if (IsUpgraded)
-            CardCmd.Upgrade(card);
-        
+        if (IsUpgraded) CardCmd.Upgrade(card);
         await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, true);
+
+        await CardPileCmd.Add(card, PileType.Draw, CardPilePosition.Random);
     }
 
     protected override void OnUpgrade()

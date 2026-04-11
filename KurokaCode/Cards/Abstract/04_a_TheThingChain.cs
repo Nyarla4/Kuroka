@@ -26,24 +26,12 @@ public abstract class TheThingChainCard<TNext>(CardType type, TargetType target)
         PlayerChoiceContext choiceContext,
         CardPlay cardPlay)
     {
-        var cardPool = new List<CardModel> { ModelDb.Get<TNext>() };
-    
-        var card = CardFactory.GetDistinctForCombat(
-            this.Owner, 
-            cardPool, 
-            1, 
-            this.Owner.RunState.Rng.CombatCardGeneration
-        ).FirstOrDefault();
+        var card = Owner.Creature.CombatState.CreateCard(ModelDb.Get<TNext>(), Owner);
+        if (IsUpgraded) CardCmd.Upgrade(card);
+        await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, true);
 
-        if (card != null)
-        {
-            if (IsUpgraded)
-            {
-                CardCmd.Upgrade(card);
-            }
-            CardPileAddResult combat = await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Deck, true);
-        }
-
+        await CardPileCmd.Add(card, PileType.Draw, CardPilePosition.Random);
+        
         if (IsUpgraded)
             await CardPileCmd.Draw(choiceContext, 1M, this.Owner);
 
