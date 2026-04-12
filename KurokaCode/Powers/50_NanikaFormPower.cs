@@ -25,25 +25,44 @@ public class NanikaFormPower : KurokaPower
         if (player != nanikaPower.Owner.Player)
             return;
 
-        List<PotionModel> potions = new()
+        List<Type> potionTypes = new()
         {
-            ModelDb.Potion<NanikaSaintPotion>(),
-            ModelDb.Potion<NanikaSpecialAttackPotion>(),
-            ModelDb.Potion<NanikaSpecialAshwater>(),
-            ModelDb.Potion<NanikaSpecialBeetleJuice>(),
+            typeof(NanikaSaintPotion),
+            typeof(NanikaSaintPotion),
+            typeof(NanikaSpecialAshwater),
+            typeof(NanikaSpecialAttackPotion),
+            typeof(NanikaSpecialBeetleJuice),
+            typeof(NanikaSpecialBlessingOfTheForge),
+            typeof(NanikaSpecialBlockPotion),
+            typeof(NanikaSpecialBloodPotion),
+            typeof(NanikaSpecialBottledPotential),
+            typeof(NanikaSpecialClarity),
+            typeof(NanikaSpecialColorlessPotion),
+            typeof(NanikaSpecialCosmicConcoction),
+            typeof(NanikaSpecialCureAll),
+            typeof(NanikaSpecialDexterityPotion),
+            typeof(NanikaSpecialDistilledChaos),
         };
 
-        var generatedPotions = PotionFactory.CreateRandomPotion(potions, 1, player.RunState.Rng.CombatPotionGeneration);
-    
-        PotionModel targetPotion = generatedPotions?[0];
-
-        if (targetPotion == null)
+        var rng = player.RunState.Rng.CombatPotionGeneration;
+        Type selectedType = potionTypes[rng.NextInt(0, potionTypes.Count)];
+        
+        PotionModel potion = selectedType switch
         {
-            logger.Error("targetPotion null");
+            var t when t == typeof(NanikaSaintPotion)          => ModelDb.Get<NanikaSaintPotion>(),
+            var t when t == typeof(NanikaSpecialAttackPotion)  => ModelDb.Get<NanikaSpecialAttackPotion>(),
+            var t when t == typeof(NanikaSpecialAshwater)      => ModelDb.Get<NanikaSpecialAshwater>(),
+            var t when t == typeof(NanikaSpecialBeetleJuice)   => ModelDb.Get<NanikaSpecialBeetleJuice>(),
+            _ => null
+        };
+
+        if (potion == null)
+        {
+            logger.Error("potion null");
             return;
         }
 
-        await PotionCmd.TryToProcure(targetPotion, player);
+        await PotionCmd.TryToProcure(potion, player);
         nanikaPower.Flash();
     }
 }

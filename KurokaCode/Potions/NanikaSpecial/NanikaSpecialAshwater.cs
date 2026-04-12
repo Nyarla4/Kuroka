@@ -14,8 +14,6 @@ public class NanikaSpecialAshwater :NanikaSpecialPotion
 {
     public readonly Color _tint = new Color("83ebdf");
     
-    public override PotionRarity Rarity => PotionRarity.Common;
-
     public override PotionUsage Usage => PotionUsage.CombatOnly;
 
     public override TargetType TargetType => TargetType.Self;

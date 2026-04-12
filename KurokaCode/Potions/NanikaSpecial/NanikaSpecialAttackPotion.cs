@@ -10,8 +10,6 @@ namespace Kuroka.KurokaCode.Potions.NanikaSpecial;
 
 public class NanikaSpecialAttackPotion :NanikaSpecialPotion
 {   
-    public override PotionRarity Rarity => PotionRarity.Common;
-
     public override PotionUsage Usage => PotionUsage.CombatOnly;
 
     public override TargetType TargetType => TargetType.Self;

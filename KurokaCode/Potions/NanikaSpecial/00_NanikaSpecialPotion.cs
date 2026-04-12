@@ -1,10 +1,13 @@
 ﻿
+using MegaCrit.Sts2.Core.Entities.Potions;
 using MegaCrit.Sts2.Core.Helpers;
 
 namespace Kuroka.KurokaCode.Potions.NanikaSpecial;
 
 public abstract class NanikaSpecialPotion : KurokaPotion
 {
+    public override PotionRarity Rarity => PotionRarity.Token;
+    
     // KUROKA-NANIKA_SPECIAL_ 접두사 제거 후 소문자로 경로 생성
     public override string CustomPackedImagePath =>
         ImageHelper.GetImagePath(
