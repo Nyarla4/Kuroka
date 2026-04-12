@@ -1,4 +1,5 @@
-﻿using MegaCrit.Sts2.Core.Commands;
+﻿using BaseLib.Extensions;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Potions;
@@ -10,7 +11,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Kuroka.KurokaCode.Potions.NanikaSpecial;
 
-public class NanikaSpecialDexterityPotion : NanikaSpecialPotion
+public class NanikaSpecialMazalethsGift : NanikaSpecialPotion
 {
     public override PotionUsage Usage => PotionUsage.CombatOnly;
 
@@ -18,18 +19,20 @@ public class NanikaSpecialDexterityPotion : NanikaSpecialPotion
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<DexterityPower>(1M)
+        new PowerVar<RitualPower>(1M)
     ];
 
     public override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromPower<DexterityPower>()
+        HoverTipFactory.FromPower<RitualPower>(),
+        HoverTipFactory.FromPower<StrengthPower>()
     ];
 
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
-        NanikaSpecialDexterityPotion dexterityPotion = this;
+        NanikaSpecialMazalethsGift mazalethsGift = this;
         PotionModel.AssertValidForTargetedPotion(target);
-        DexterityPower dexterityPower = await PowerCmd.Apply<DexterityPower>(target, dexterityPotion.DynamicVars.Dexterity.BaseValue, dexterityPotion.Owner.Creature, (CardModel) null);
+        RitualPower ritualPower = await PowerCmd.Apply<RitualPower>(target,
+            mazalethsGift.DynamicVars.Power<RitualPower>().BaseValue, mazalethsGift.Owner.Creature, (CardModel)null);
     }
 }

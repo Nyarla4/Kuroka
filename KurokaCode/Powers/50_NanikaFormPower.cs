@@ -24,37 +24,66 @@ public class NanikaFormPower : KurokaPower
         NanikaFormPower nanikaPower = this;
         if (player != nanikaPower.Owner.Player)
             return;
-
-        List<Type> potionTypes = new()
-        {
-            typeof(NanikaSaintPotion),
-            typeof(NanikaSaintPotion),
-            typeof(NanikaSpecialAshwater),
-            typeof(NanikaSpecialAttackPotion),
-            typeof(NanikaSpecialBeetleJuice),
-            typeof(NanikaSpecialBlessingOfTheForge),
-            typeof(NanikaSpecialBlockPotion),
-            typeof(NanikaSpecialBloodPotion),
-            typeof(NanikaSpecialBottledPotential),
-            typeof(NanikaSpecialClarity),
-            typeof(NanikaSpecialColorlessPotion),
-            typeof(NanikaSpecialCosmicConcoction),
-            typeof(NanikaSpecialCureAll),
-            typeof(NanikaSpecialDexterityPotion),
-            typeof(NanikaSpecialDistilledChaos),
-        };
-
-        var rng = player.RunState.Rng.CombatPotionGeneration;
-        Type selectedType = potionTypes[rng.NextInt(0, potionTypes.Count)];
         
-        PotionModel potion = selectedType switch
-        {
-            var t when t == typeof(NanikaSaintPotion)          => ModelDb.Get<NanikaSaintPotion>(),
-            var t when t == typeof(NanikaSpecialAttackPotion)  => ModelDb.Get<NanikaSpecialAttackPotion>(),
-            var t when t == typeof(NanikaSpecialAshwater)      => ModelDb.Get<NanikaSpecialAshwater>(),
-            var t when t == typeof(NanikaSpecialBeetleJuice)   => ModelDb.Get<NanikaSpecialBeetleJuice>(),
-            _ => null
-        };
+        List<PotionModel> potions = 
+        [
+            ModelDb.Potion<NanikaSaintPotion>(),
+            ModelDb.Potion<NanikaSpecialAshwater>(),
+            ModelDb.Potion<NanikaSpecialAttackPotion>(),
+            ModelDb.Potion<NanikaSpecialBeetleJuice>(),
+            ModelDb.Potion<NanikaSpecialBlessingOfTheForge>(),
+            ModelDb.Potion<NanikaSpecialBlockPotion>(),
+            ModelDb.Potion<NanikaSpecialBloodPotion>(),
+            ModelDb.Potion<NanikaSpecialBottledPotential>(),
+            ModelDb.Potion<NanikaSpecialClarity>(),
+            ModelDb.Potion<NanikaSpecialColorlessPotion>(),
+            ModelDb.Potion<NanikaSpecialCosmicConcoction>(),
+            ModelDb.Potion<NanikaSpecialCureAll>(),
+            ModelDb.Potion<NanikaSpecialDexterityPotion>(),
+            ModelDb.Potion<NanikaSpecialDistilledChaos>(),
+            ModelDb.Potion<NanikaSpecialDropletOfPrecognition>(),
+            ModelDb.Potion<NanikaSpecialDuplicator>(),
+            ModelDb.Potion<NanikaSpecialEnergyPotion>(),
+            ModelDb.Potion<NanikaSpecialEntropicBrew>(),
+            ModelDb.Potion<NanikaSpecialExplosiveAmpoule>(),
+            ModelDb.Potion<NanikaSpecialFairyInABottle>(),
+            ModelDb.Potion<NanikaSpecialFirePotion>(),
+            ModelDb.Potion<NanikaSpecialFlexPotion>(),
+            ModelDb.Potion<NanikaSpecialFortifier>(),
+            ModelDb.Potion<NanikaSpecialFruitJuice>(),
+            ModelDb.Potion<NanikaSpecialFyshOil>(),
+            ModelDb.Potion<NanikaSpecialGamblersBrew>(),
+            ModelDb.Potion<NanikaSpecialGhostInAJar>(),
+            ModelDb.Potion<NanikaSpecialGigantificationPotion>(),
+            ModelDb.Potion<NanikaSpecialHeartOfIron>(),
+            ModelDb.Potion<NanikaSpecialLiquidBronze>(),
+            ModelDb.Potion<NanikaSpecialLiquidMemories>(),
+            ModelDb.Potion<NanikaSpecialLuckyTonic>(),
+            ModelDb.Potion<NanikaSpecialMazalethsGift>(),
+            ModelDb.Potion<NanikaSpecialOrobicAcid>(),
+            ModelDb.Potion<NanikaSpecialPotionOfBinding>(),
+            ModelDb.Potion<NanikaSpecialPowderedDemise>(),
+            ModelDb.Potion<NanikaSpecialPowerPotion>(),
+            ModelDb.Potion<NanikaSpecialRadiantTincture>(),
+            ModelDb.Potion<NanikaSpecialRegenPotion>(),
+            ModelDb.Potion<NanikaSpecialShacklingPotion>(),
+            ModelDb.Potion<NanikaSpecialShipInABottle>(),
+            ModelDb.Potion<NanikaSpecialSkillPotion>(),
+            ModelDb.Potion<NanikaSpecialSneckoOil>(),
+            ModelDb.Potion<NanikaSpecialSoldiersStew>(),
+            ModelDb.Potion<NanikaSpecialSpeedPotion>(),
+            ModelDb.Potion<NanikaSpecialStableSerum>(),
+            ModelDb.Potion<NanikaSpecialStrengthPotion>(),
+            ModelDb.Potion<NanikaSpecialSwiftPotion>(),
+            ModelDb.Potion<NanikaSpecialTouchOfInsanity>(),
+            ModelDb.Potion<NanikaSpecialVulnerablePotion>(),
+            ModelDb.Potion<NanikaSpecialWeakPotion>()
+        ];
+        var rng = player.RunState.Rng.CombatPotionGeneration;
+
+        // CreateRandomPotion은 rarity 필터링으로 인해 커스텀 풀에 부적합
+        // rng.NextItem으로 직접 선택 후 ToMutable()로 mutable 인스턴스 생성
+        PotionModel? potion = rng.NextItem(potions)?.ToMutable();
 
         if (potion == null)
         {

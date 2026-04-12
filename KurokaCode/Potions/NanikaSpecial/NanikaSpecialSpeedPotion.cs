@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Kuroka.KurokaCode.Potions.NanikaSpecial;
 
-public class NanikaSpecialDexterityPotion : NanikaSpecialPotion
+public class NanikaSpecialSpeedPotion : NanikaSpecialPotion
 {
     public override PotionUsage Usage => PotionUsage.CombatOnly;
 
@@ -18,7 +18,7 @@ public class NanikaSpecialDexterityPotion : NanikaSpecialPotion
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<DexterityPower>(1M)
+        new PowerVar<DexterityPower>(3M)
     ];
 
     public override IEnumerable<IHoverTip> ExtraHoverTips =>
@@ -28,8 +28,8 @@ public class NanikaSpecialDexterityPotion : NanikaSpecialPotion
 
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
-        NanikaSpecialDexterityPotion dexterityPotion = this;
+        NanikaSpecialSpeedPotion speedPotion = this;
         PotionModel.AssertValidForTargetedPotion(target);
-        DexterityPower dexterityPower = await PowerCmd.Apply<DexterityPower>(target, dexterityPotion.DynamicVars.Dexterity.BaseValue, dexterityPotion.Owner.Creature, (CardModel) null);
+        SpeedPotionPower speedPotionPower = await PowerCmd.Apply<SpeedPotionPower>(target, speedPotion.DynamicVars.Dexterity.BaseValue, speedPotion.Owner.Creature, (CardModel) null);
     }
 }

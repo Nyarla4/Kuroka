@@ -1,4 +1,5 @@
-﻿using MegaCrit.Sts2.Core.Commands;
+﻿using BaseLib.Extensions;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Potions;
@@ -10,7 +11,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Kuroka.KurokaCode.Potions.NanikaSpecial;
 
-public class NanikaSpecialDexterityPotion : NanikaSpecialPotion
+public class NanikaSpecialHeartOfIron:NanikaSpecialPotion
 {
     public override PotionUsage Usage => PotionUsage.CombatOnly;
 
@@ -18,18 +19,19 @@ public class NanikaSpecialDexterityPotion : NanikaSpecialPotion
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<DexterityPower>(1M)
+        new PowerVar<PlatingPower>(5M)
     ];
 
     public override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromPower<DexterityPower>()
+        HoverTipFactory.FromPower<PlatingPower>(),
+        HoverTipFactory.Static(StaticHoverTip.Block)
     ];
 
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
-        NanikaSpecialDexterityPotion dexterityPotion = this;
+        NanikaSpecialHeartOfIron heartOfIron = this;
         PotionModel.AssertValidForTargetedPotion(target);
-        DexterityPower dexterityPower = await PowerCmd.Apply<DexterityPower>(target, dexterityPotion.DynamicVars.Dexterity.BaseValue, dexterityPotion.Owner.Creature, (CardModel) null);
+        PlatingPower platingPower = await PowerCmd.Apply<PlatingPower>(target, heartOfIron.DynamicVars.Power<PlatingPower>().BaseValue, heartOfIron.Owner.Creature, (CardModel) null);
     }
 }

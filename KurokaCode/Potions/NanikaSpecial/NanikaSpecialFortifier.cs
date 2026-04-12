@@ -4,32 +4,25 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Potions;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Kuroka.KurokaCode.Potions.NanikaSpecial;
 
-public class NanikaSpecialDexterityPotion : NanikaSpecialPotion
+public class NanikaSpecialFortifier : NanikaSpecialPotion
 {
     public override PotionUsage Usage => PotionUsage.CombatOnly;
 
     public override TargetType TargetType => TargetType.AnyPlayer;
 
-    protected override IEnumerable<DynamicVar> CanonicalVars =>
-    [
-        new PowerVar<DexterityPower>(1M)
-    ];
-
     public override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromPower<DexterityPower>()
+        HoverTipFactory.Static(StaticHoverTip.Block)
     ];
 
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
-        NanikaSpecialDexterityPotion dexterityPotion = this;
         PotionModel.AssertValidForTargetedPotion(target);
-        DexterityPower dexterityPower = await PowerCmd.Apply<DexterityPower>(target, dexterityPotion.DynamicVars.Dexterity.BaseValue, dexterityPotion.Owner.Creature, (CardModel) null);
+        Decimal num = await CreatureCmd.GainBlock(target, (Decimal) (target.Block * 1), ValueProp.Unpowered, (CardPlay) null);
     }
 }

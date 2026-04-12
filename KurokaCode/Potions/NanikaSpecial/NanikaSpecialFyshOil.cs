@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Kuroka.KurokaCode.Potions.NanikaSpecial;
 
-public class NanikaSpecialDexterityPotion : NanikaSpecialPotion
+public class NanikaSpecialFyshOil : NanikaSpecialPotion
 {
     public override PotionUsage Usage => PotionUsage.CombatOnly;
 
@@ -18,18 +18,21 @@ public class NanikaSpecialDexterityPotion : NanikaSpecialPotion
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
+        new PowerVar<StrengthPower>(1M),
         new PowerVar<DexterityPower>(1M)
     ];
 
     public override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
+        HoverTipFactory.FromPower<StrengthPower>(),
         HoverTipFactory.FromPower<DexterityPower>()
     ];
 
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
-        NanikaSpecialDexterityPotion dexterityPotion = this;
+        NanikaSpecialFyshOil fyshOil = this;
         PotionModel.AssertValidForTargetedPotion(target);
-        DexterityPower dexterityPower = await PowerCmd.Apply<DexterityPower>(target, dexterityPotion.DynamicVars.Dexterity.BaseValue, dexterityPotion.Owner.Creature, (CardModel) null);
+        StrengthPower strengthPower = await PowerCmd.Apply<StrengthPower>(target, fyshOil.DynamicVars.Strength.BaseValue, fyshOil.Owner.Creature, (CardModel) null);
+        DexterityPower dexterityPower = await PowerCmd.Apply<DexterityPower>(target, fyshOil.DynamicVars.Dexterity.BaseValue, fyshOil.Owner.Creature, (CardModel) null);
     }
 }

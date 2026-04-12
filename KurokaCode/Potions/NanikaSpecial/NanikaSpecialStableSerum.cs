@@ -10,26 +10,26 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Kuroka.KurokaCode.Potions.NanikaSpecial;
 
-public class NanikaSpecialDexterityPotion : NanikaSpecialPotion
+public class NanikaSpecialStableSerum : NanikaSpecialPotion
 {
     public override PotionUsage Usage => PotionUsage.CombatOnly;
 
     public override TargetType TargetType => TargetType.AnyPlayer;
 
-    protected override IEnumerable<DynamicVar> CanonicalVars =>
-    [
-        new PowerVar<DexterityPower>(1M)
-    ];
-
     public override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromPower<DexterityPower>()
+        HoverTipFactory.FromKeyword(CardKeyword.Retain)
+    ];
+
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new RepeatVar(1)
     ];
 
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
-        NanikaSpecialDexterityPotion dexterityPotion = this;
+        NanikaSpecialStableSerum stableSerum = this;
         PotionModel.AssertValidForTargetedPotion(target);
-        DexterityPower dexterityPower = await PowerCmd.Apply<DexterityPower>(target, dexterityPotion.DynamicVars.Dexterity.BaseValue, dexterityPotion.Owner.Creature, (CardModel) null);
+        RetainHandPower retainHandPower = await PowerCmd.Apply<RetainHandPower>(target, stableSerum.DynamicVars.Repeat.BaseValue, stableSerum.Owner.Creature, (CardModel) null);
     }
 }
