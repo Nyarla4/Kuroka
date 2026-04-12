@@ -33,10 +33,13 @@ public class ThreeMeterPower : KurokaPower
         if (counterDamage <= 0) return;
 
         this.Flash();
-        await DamageCmd.Attack(counterDamage)
-            .FromCard(null)
-            .Targeting(dealer)
-            .Execute(choiceContext);
+        await CreatureCmd.Damage(choiceContext, 
+            dealer,
+            counterDamage,
+            ValueProp.Unpowered,
+            this.Owner,
+            null
+        );
     }
 
     // 턴 시작 시 자기 제거

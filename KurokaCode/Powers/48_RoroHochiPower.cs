@@ -17,6 +17,12 @@ public class RoroHochiPower : RorokaAdditionalPower
         {
             return;
         }
+        
+        if (player != this.Owner.PetOwner)
+        {
+            return;
+        }
+
         await CreatureCmd.Damage(
             choiceContext,
             this.CombatState.HittableEnemies,

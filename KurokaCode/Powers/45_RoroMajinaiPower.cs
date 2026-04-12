@@ -17,6 +17,11 @@ public class RoroMajinaiPower : RorokaAdditionalPower
         {
             return;
         }
+
+        if (player != this.Owner.PetOwner)
+        {
+            return;
+        }
         
         Creature? enemy = player.RunState.Rng.CombatTargets.NextItem(CombatState.HittableEnemies);
         if (enemy != null)

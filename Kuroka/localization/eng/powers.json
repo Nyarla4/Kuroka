@@ -21,7 +21,7 @@
 
   "KUROKA-SECOM_MASADA_POWER.title": "세콤마사다",
   "KUROKA-SECOM_MASADA_POWER.description": "턴 시작시 적 전체에게 피해를 줍니다.",
-  "KUROKA-SECOM_MASADA_POWER.smartDescription": "턴 시작시 적 전체에게 피해를 [blue]{Amount}[/blue] 줍니다.",
+  "KUROKA-SECOM_MASADA_POWER.smartDescription": "턴 시작시 적 전체에게 피해를 [blue]{Amount} + {Delusion}[/blue] 줍니다.",
   
   "KUROKA-THREE_METER_POWER.title": "키가 3미터",
   "KUROKA-THREE_METER_POWER.description": "이번 턴에 공격한 적에게 피해를 줍니다",
@@ -69,7 +69,7 @@
   
   "KUROKA-NANIKA_FORM_POWER.title": "나니카",
   "KUROKA-NANIKA_FORM_POWER.description": "턴 시작 시 무작위 나니카 특제 포션을 획득합니다.",
-  "KUROKA-NANIKA_FORM_POWER.smartDescription": "턴 시작 시 무작위 나니카 특제 포션을 [blue]{Amount}개}[/blue] 획득합니다.",
+  "KUROKA-NANIKA_FORM_POWER.smartDescription": "턴 시작 시 무작위 나니카 특제 포션을 [blue]{Amount}개[/blue] 획득합니다.",
   
   "KUROKA-PEP_ZE_LI_POWER.title": "펩제라",
   "KUROKA-PEP_ZE_LI_POWER.description": "다음 턴에 에너지를 추가로 얻습니다.",
